@@ -55,39 +55,41 @@ export const PrivacyPolicySection = (): JSX.Element => {
         ))}
       </div>
 
-      <div className="absolute top-[156px] left-[71px]">
-        <Breadcrumb>
-          <BreadcrumbList className="gap-0.5">
-            {breadcrumbItems.map((item, index) => (
-              <React.Fragment key={index}>
-                <BreadcrumbItem>
-                  {item.isActive ? (
-                    <BreadcrumbPage className="flex items-end justify-center [font-family:'Inter',Helvetica] font-normal text-[#808080] text-sm text-center tracking-[0] leading-[normal]">
-                      {item.label}
-                    </BreadcrumbPage>
-                  ) : (
-                    <BreadcrumbLink
-                      href={item.href}
-                      className="flex items-end justify-center [font-family:'Inter',Helvetica] font-normal text-[#069dd8] text-sm text-center tracking-[0] leading-[normal]"
-                    >
-                      {item.label}
-                    </BreadcrumbLink>
+      <div className="mx-auto max-w-[1400px] px-6 relative z-10 py-20">
+        <div className="mb-4">
+          <Breadcrumb>
+            <BreadcrumbList className="gap-0.5">
+              {breadcrumbItems.map((item, index) => (
+                <React.Fragment key={index}>
+                  <BreadcrumbItem>
+                    {item.isActive ? (
+                      <BreadcrumbPage className="flex items-end justify-center [font-family:'Inter',Helvetica] font-normal text-[#808080] text-sm text-center tracking-[0] leading-[normal]">
+                        {item.label}
+                      </BreadcrumbPage>
+                    ) : (
+                      <BreadcrumbLink
+                        href={item.href}
+                        className="flex items-end justify-center [font-family:'Inter',Helvetica] font-normal text-[#069dd8] text-sm text-center tracking-[0] leading-[normal]"
+                      >
+                        {item.label}
+                      </BreadcrumbLink>
+                    )}
+                  </BreadcrumbItem>
+                  {index < breadcrumbItems.length - 1 && (
+                    <BreadcrumbSeparator>
+                      <ChevronRightIcon className="w-6 h-6" />
+                    </BreadcrumbSeparator>
                   )}
-                </BreadcrumbItem>
-                {index < breadcrumbItems.length - 1 && (
-                  <BreadcrumbSeparator>
-                    <ChevronRightIcon className="w-6 h-6" />
-                  </BreadcrumbSeparator>
-                )}
-              </React.Fragment>
-            ))}
-          </BreadcrumbList>
-        </Breadcrumb>
-      </div>
+                </React.Fragment>
+              ))}
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
 
-      <h1 className="absolute top-[212px] left-[71px] font-h4-bold font-[number:var(--h4-bold-font-weight)] text-[#333333] text-[length:var(--h4-bold-font-size)] tracking-[var(--h4-bold-letter-spacing)] leading-[var(--h4-bold-line-height)] whitespace-nowrap [font-style:var(--h4-bold-font-style)]">
-        Kuasai Bidang dengan Profesional melalui Spesialisasi
-      </h1>
+        <h1 className="font-h4-bold font-[number:var(--h4-bold-font-weight)] text-[#333333] text-[length:var(--h4-bold-font-size)] tracking-[var(--h4-bold-letter-spacing)] leading-[var(--h4-bold-line-height)] [font-style:var(--h4-bold-font-style)]">
+          Kuasai Bidang dengan Profesional melalui Spesialisasi
+        </h1>
+      </div>
     </section>
   );
 };

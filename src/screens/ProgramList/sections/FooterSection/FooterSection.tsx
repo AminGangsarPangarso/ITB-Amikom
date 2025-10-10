@@ -17,9 +17,10 @@ const footerLinks = {
 export const FooterSection = (): JSX.Element => {
   return (
     <footer className="relative w-full bg-white">
-      <img className="w-full h-full object-cover" alt="Bg" src="/bg.svg" />
+      {/* decorative background */}
+      <img className="pointer-events-none select-none absolute inset-0 w-full h-full object-cover opacity-60" alt="Bg" src="/bg.svg" />
 
-      <div className="flex w-full max-w-[1224px] mx-auto px-4 py-12 items-start justify-between">
+      <div className="relative z-10 mx-auto max-w-[1224px] w-full px-6 py-10 bg-gradient-to-r from-[#eef6fb] to-[#eaf3f8] rounded-[18px] shadow-[0_8px_24px_rgba(6,96,166,0.08)] flex items-start justify-between gap-8">
         <div className="flex flex-col w-full max-w-[353px] items-start gap-4">
           <div className="inline-flex items-center gap-2">
             <div className="inline-flex items-center gap-3">
@@ -55,7 +56,7 @@ export const FooterSection = (): JSX.Element => {
           </div>
         </div>
 
-        <div className="inline-flex flex-col items-start gap-4">
+  <div className="inline-flex flex-col items-start gap-4">
           <div className="font-h11-bold font-[number:var(--h11-bold-font-weight)] text-[#0660a6] text-[length:var(--h11-bold-font-size)] tracking-[var(--h11-bold-letter-spacing)] leading-[var(--h11-bold-line-height)] [font-style:var(--h11-bold-font-style)]">
             Temukan
           </div>
@@ -81,7 +82,7 @@ export const FooterSection = (): JSX.Element => {
           </div>
         </div>
 
-        <div className="inline-flex flex-col items-start gap-4">
+  <div className="inline-flex flex-col items-start gap-4">
           <div className="font-h11-bold font-[number:var(--h11-bold-font-weight)] text-[#0660a6] text-[length:var(--h11-bold-font-size)] tracking-[var(--h11-bold-letter-spacing)] leading-[var(--h11-bold-line-height)] [font-style:var(--h11-bold-font-style)]">
             Bantuan &amp; Dukungan
           </div>
@@ -107,7 +108,7 @@ export const FooterSection = (): JSX.Element => {
           </div>
         </div>
 
-        <div className="inline-flex flex-col items-start gap-4">
+  <div className="inline-flex flex-col items-start gap-4">
           <div className="font-h11-bold font-[number:var(--h11-bold-font-weight)] text-[#0660a6] text-[length:var(--h11-bold-font-size)] tracking-[var(--h11-bold-letter-spacing)] leading-[var(--h11-bold-line-height)] [font-style:var(--h11-bold-font-style)]">
             Media Sosial
           </div>
@@ -116,9 +117,9 @@ export const FooterSection = (): JSX.Element => {
         </div>
       </div>
 
-      <div className="w-full flex items-center justify-center bg-white py-4 border-t">
+      <div className="w-full flex items-center justify-center bg-transparent py-6">
         <div className="inline-flex items-center gap-2">
-          <div className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#9e9e9e] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
+          <div className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#9e9e9e] text-sm tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
             ©2024 Direktorat Pendidikan Akademik dan Kemahasiswaan Kampus
           </div>
         </div>

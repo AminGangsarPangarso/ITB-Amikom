@@ -19,7 +19,7 @@ const programDropdownData = {
       itb: ["spesialisasi", "minor", "double-major", "multidisiplin"],
       international: ["students-exchange", "double-major", "summer-school"]
     },
-    link: "/programs/sarjana"
+    link: "/programs/sarjana/spesialisasi"
   },
   pascasarjana: {
     title: "Pascasarjana", 
@@ -28,7 +28,7 @@ const programDropdownData = {
       itb: ["Multidisiplin"],
       international: ["Students Exchange", "Double Major", "Summer School"]
     },
-    link: "/programs/pascasarjana"
+    link: "/programs/pascasarjana/multidisiplin"
   },
   profesi: {
     title: "Profesi",
@@ -37,7 +37,7 @@ const programDropdownData = {
       itb: [],
       international: []
     },
-    link: "/programs/profesi"
+    link: "/"
   }
 };
 

@@ -1,14 +1,16 @@
 import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon, ChevronUpIcon, SearchIcon } from "lucide-react";
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { Badge } from "../../../../components/ui/badge";
 import { Button } from "../../../../components/ui/button";
 import { Card, CardContent } from "../../../../components/ui/card";
+import { Link } from "react-router-dom";
 import { Checkbox } from "../../../../components/ui/checkbox";
+import { Separator } from "../../../../components/ui/home/separator";
 import { Input } from "../../../../components/ui/input";
 import { Label } from "../../../../components/ui/label";
 import { RadioGroup, RadioGroupItem } from "../../../../components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../../../components/ui/select";
-import { Separator } from "../../../../components/ui/separator";
+import { useProgram } from "../../programContext";
 
 const programTypes = [
   { id: "spesialisasi", label: "Spesialisasi", checked: true },
@@ -33,28 +35,102 @@ const studyPrograms = [
   { id: "geologi", label: "Teknik Geologi", checked: true },
 ];
 
-const programs = [
-  { title: "Struktur Lepas Pantai", faculty: "FITB", department: "Meteorologi" },
-  { title: "Teknik Pantai dan Kawasan Pesisi", faculty: "FITB", department: "Meteorologi" },
-  { title: "Pelabuhan, Transportasi Laut dan Logistik", faculty: "FITB", department: "Meteorologi" },
-  { title: "Lingkungan Laut, Reklamasi dan Pengerukan", faculty: "FITB", department: "Meteorologi" },
-  { title: "Struktur Lepas Pantai", faculty: "FITB", department: "Oseanografi" },
-  { title: "Teknik Pantai dan Kawasan Pesisi", faculty: "FITB", department: "Meteorologi" },
-  { title: "Pelabuhan, Transportasi Laut dan Logistik", faculty: "FITB", department: "Teknik Geodesi dan Geomatika" },
-  { title: "Lingkungan Laut, Reklamasi dan Pengerukan", faculty: "FITB", department: "Oseanografi" },
-  { title: "Struktur Lepas Pantai", faculty: "FITB", department: "Teknik Geodesi dan Geomatika" },
-  { title: "Teknik Pantai dan Kawasan Pesisi", faculty: "FITB", department: "Teknik Geodesi dan Geomatika" },
-  { title: "Pelabuhan, Transportasi Laut dan Logistik", faculty: "FITB", department: "Teknik Geologi" },
-  { title: "Lingkungan Laut, Reklamasi dan Pengerukan", faculty: "FITB", department: "Teknik Geologi" },
-];
+// Programs grouped by type. UI expects a `programs` variable, so we derive it
+// from `programFilter` later so existing render code doesn't need changes.
+const programsByType: Record<string, Array<{ title: string; faculty: string; department?: string, slug? : string }>> = {
+  "spesialisasi": [
+    { title: "Struktur Lepas Pantai", faculty: "FITB", department: "Meteorologi", slug: "struktur-lepas-pantai" },
+    { title: "Teknik Pantai dan Kawasan Pesisi", faculty: "FITB", department: "Meteorologi" },
+    { title: "Pelabuhan, Transportasi Laut dan Logistik", faculty: "FITB", department: "Meteorologi" },
+    { title: "Lingkungan Laut, Reklamasi dan Pengerukan", faculty: "FITB", department: "Meteorologi" },
+    { title: "Teknik Geodesi Terapan", faculty: "FITB", department: "Teknik Geodesi dan Geomatika" },
+    { title: "Teknik Geologi Terapan", faculty: "FITB", department: "Teknik Geologi" },
+    { title: "Pelabuhan dan Transportasi Laut", faculty: "FITB", department: "Oseanografi" },
+    { title: "Rekayasa Pantai dan Pesisir", faculty: "FITB", department: "Meteorologi" },
+  ],
+
+  "minor": [
+    { title: "Fisika Bangunan", faculty: "FTI", department: "Teknik Fisika", slug: "fisika-bangunan" },
+    { title: "Material Maju", faculty: "FTI", department: "Teknik Fisika" },
+    { title: "Industry 4.0", faculty: "FTI", department: "Teknik Fisika" },
+    { title: "Instrumentasi & Kontrol", faculty: "FTI", department: "Teknik Fisika" },
+    { title: "Perencanaan Wilayah & Kota", faculty: "SAPPK", department: "Perencanaan Wilayah & kota" },
+    { title: "Kimia Organik", faculty: "FMIPA", department: "Kimia" },
+    { title: "Biokimia Umum", faculty: "FMIPA", department: "Kimia" },
+    { title: "Kimia Analitik", faculty: "FMIPA", department: "Kimia" },
+    { title: "Teknologi Nano", faculty: "FITB", department: "Meteorologi" },
+  ],
+
+  "double-major": [
+    { title: "Teknik Lingkungan", faculty: "FTMD", department: "Teknik Lingkungan" },
+    { title: "Teknik Elektro", faculty: "STEI", department: "Teknik Elektro" },
+    { title: "Teknik Material", faculty: "FTMD", department: "Teknik Material" },
+    { title: "Teknik Mesin", faculty: "FTMD", department: "Teknik Mesin" },
+    { title: "Teknik Geofisika", faculty: "FTTM", department: "Teknik Geofisika" },
+    { title: "Kewirausahaan", faculty: "SBM", department: "Manajemen" },
+    { title: "Teknik Sipil", faculty: "FTSL", department: "Teknik Sipil" },
+    { title: "Teknik Fisika", faculty: "FTI", department: "Teknik Fisika" },
+  ],
+
+  "multidisiplin": [
+    { title: "Teknologi Nano", faculty: "FITB", department: "Meteorologi" },
+    { title: "Teknologi Kesehatan", faculty: "FITB", department: "Meteorologi" },
+    { title: "Pendidikan Sains 4.0", faculty: "SAPPK", department: "Perencanaan Kepariwisataan" },
+    { title: "Digital Technopreneurship", faculty: "FITB", department: "Interdisipliner" },
+    { title: "Smart-X", faculty: "FITB", department: "Interdisipliner" },
+    { title: "Material Baterai", faculty: "FITB", department: "Interdisipliner" },
+    { title: "Kebencanaan", faculty: "FITB", department: "Meteorologi" },
+    { title: "Pariwisata Hayati Berkelanjutan", faculty: "SAPPK", department: "Perencanaan Kepariwisataan" },
+    { title: "Kepemimpinan Desain", faculty: "FITB", department: "Interdisipliner" },
+  ],
+};
+
+// `programFilter` (state) drives which list to show; keep a `programs` variable
+// so existing render code (which expects `programs`) continues to work.
+// NOTE: `programFilter` default is 'spesialisasi' so this will resolve correctly.
+
 
 export const MainContentSection = (): JSX.Element => {
+  const { programName, programType } = useProgram();
+
   const [programFilter, setProgramFilter] = useState("spesialisasi");
   const [facultyFilter, setFacultyFilter] = useState("fitb");
   const [selectedPrograms, setSelectedPrograms] = useState<string[]>(studyPrograms.map(p => p.id));
   const [isProgramExpanded, setIsProgramExpanded] = useState(true);
   const [isFacultyExpanded, setIsFacultyExpanded] = useState(true);
   const [isStudyProgramExpanded, setIsStudyProgramExpanded] = useState(true);
+
+  // When the route provides a programName, adjust filters/defaults accordingly
+  useEffect(() => {
+    if (!programName) return;
+    const pn = programName.toLowerCase();
+
+    if (pn === "pascasarjana") {
+      setProgramFilter("multidisiplin");
+      setFacultyFilter("fmipa");
+    } else if (pn === "sarjana") {
+      setProgramFilter("spesialisasi");
+      setFacultyFilter("fitb");
+    } else if (pn === "profesi") {
+      setProgramFilter("spesialisasi");
+      setFacultyFilter("fti");
+    }
+  }, [programName]);
+
+  // If the route provides an explicit programType (e.g., /programs/sarjana/minor) use it
+  useEffect(() => {
+    if (!programType) return;
+    const pt = String(programType).toLowerCase();
+    if (programsByType[pt]) {
+      setProgramFilter(pt);
+    }
+  }, [programType]);
+
+  // derive programs to display from selected programFilter
+  const programs = programsByType[programFilter] ?? programsByType["spesialisasi"];
+
+  // nice human label for the selected program type (used in heading)
+  const selectedProgramTypeLabel = programTypes.find((p) => p.id === programFilter)?.label ?? "Program";
 
   const handleProgramCheckboxChange = (programId: string) => {
     if (programId === "all") {
@@ -115,16 +191,11 @@ export const MainContentSection = (): JSX.Element => {
               <RadioGroup value={programFilter} onValueChange={setProgramFilter} className="flex flex-col gap-4">
                 {programTypes.map((program) => (
                   <div key={program.id} className="flex items-start gap-5">
-                    <div className="relative w-6 h-6 flex items-center justify-center">
-                      <RadioGroupItem
-                        value={program.id}
-                        id={program.id}
-                        className="w-6 h-6 rounded-xl border-[#069dd8] data-[state=checked]:border-[#069dd8]"
-                      />
-                      {program.checked && (
-                        <div className="absolute w-3 h-3 bg-[#069dd8] rounded-md pointer-events-none" />
-                      )}
-                    </div>
+                    <RadioGroupItem
+                      value={program.id}
+                      id={program.id}
+                      className="w-6 h-6 rounded-full border border-neutral-300 data-[state=checked]:border-[#069dd8] data-[state=checked]:bg-[#069dd8] flex-shrink-0"
+                    />
                     <Label
                       htmlFor={program.id}
                       className="[font-family:'Inter',Helvetica] font-normal text-[#333333] text-base tracking-[0] leading-[26px] cursor-pointer"
@@ -157,16 +228,11 @@ export const MainContentSection = (): JSX.Element => {
                   <RadioGroup value={facultyFilter} onValueChange={setFacultyFilter} className="flex flex-col gap-4 w-full">
                     {faculties.map((faculty) => (
                       <div key={faculty.id} className="flex items-center gap-5 w-full">
-                        <div className="relative w-6 h-6 flex items-center justify-center flex-shrink-0">
-                          <RadioGroupItem
-                            value={faculty.id}
-                            id={faculty.id}
-                            className="w-6 h-6 rounded-xl border-[#069dd8] data-[state=checked]:border-[#069dd8]"
-                          />
-                          {faculty.checked && (
-                            <div className="absolute w-3 h-3 bg-[#069dd8] rounded-md pointer-events-none" />
-                          )}
-                        </div>
+                        <RadioGroupItem
+                          value={faculty.id}
+                          id={faculty.id}
+                          className="w-6 h-6 rounded-full border border-neutral-300 data-[state=checked]:border-[#069dd8] data-[state=checked]:bg-[#069dd8] flex-shrink-0"
+                        />
                         <Label
                           htmlFor={faculty.id}
                           className="flex-1 [font-family:'Inter',Helvetica] font-normal text-[#333333] text-base tracking-[0] leading-[26px] cursor-pointer"
@@ -243,10 +309,10 @@ export const MainContentSection = (): JSX.Element => {
               <div className="flex items-center justify-between w-full">
                 <div className="inline-flex items-center gap-1">
                   <span className="[font-family:'Inter',Helvetica] font-normal text-[#808080] text-base tracking-[0] leading-[26px]">
-                    Program Sarjana Spesialisasi FITB
+                    {`Program ${programName ?? ""} ${selectedProgramTypeLabel} FITB`}
                   </span>
                   <span className="font-h11-bold font-[number:var(--h11-bold-font-weight)] text-[#069dd8] text-[length:var(--h11-bold-font-size)] tracking-[var(--h11-bold-letter-spacing)] leading-[var(--h11-bold-line-height)] [font-style:var(--h11-bold-font-style)]">
-                    (20 Program)
+                    ({programs.length} Program)
                   </span>
                 </div>
                 <Select defaultValue="default">
@@ -260,39 +326,52 @@ export const MainContentSection = (): JSX.Element => {
               </div>
             </div>
 -            <div className="grid justify-center items-start gap-6 w-full grid-cols-[repeat(auto-fill,minmax(289px,1fr))]">
-              {programs.map((program, index) => (
-                <Card key={index} className="w-[289px] h-[209px] bg-white rounded-[25px] shadow-[0px_2px_25px_#000e331a] border-0">
-                  <CardContent className="flex flex-col items-center gap-3 pt-4 pb-0 px-4 h-full">
-                    <div className="flex flex-col items-start gap-4 pt-0 pb-4 px-0 flex-1 w-full">
-                      <div className="flex flex-col items-start gap-2.5 flex-1 w-full">
-                        <Badge className="h-6 bg-[#ffefd4] text-[#e99400] hover:bg-[#ffefd4] rounded-lg font-body-text-12px-medium font-[number:var(--body-text-12px-medium-font-weight)] text-[length:var(--body-text-12px-medium-font-size)] tracking-[var(--body-text-12px-medium-letter-spacing)] leading-[var(--body-text-12px-medium-line-height)] [font-style:var(--body-text-12px-medium-font-style)]">
-                          Sarjana
-                        </Badge>
-                        <div className="flex flex-col items-start gap-2 w-full">
-                          <h4 className="w-full h-[43px] [font-family:'Inter',Helvetica] font-bold text-[#333333] text-base tracking-[0] leading-[22px] overflow-hidden text-ellipsis [display:-webkit-box] [-webkit-line-clamp:1] [-webkit-box-orient:vertical]">
-                            {program.title}
-                          </h4>
-                          <div className="flex flex-col items-start gap-1 w-full">
-                            <div className="flex flex-wrap items-start gap-[8px] w-full">
-                              <span className="flex-1 font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#333333] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
-                                {program.faculty}
-                              </span>
-                            </div>
-                            <div className="flex items-center gap-2.5 w-full rounded-[5px] overflow-hidden">
-                              <span className="text-[#808080] text-[length:var(--body-text-14px-regular-font-size)] leading-[var(--body-text-14px-regular-line-height)] flex-1 font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] tracking-[var(--body-text-14px-regular-letter-spacing)] [font-style:var(--body-text-14px-regular-font-style)]">
-                                {program.department}
-                              </span>
+              {programs.map((program, index) => {
+                const slug = (program as any).slug;
+                const card = (
+                  <Card key={index} className="w-[289px] h-[209px] bg-white rounded-[25px] shadow-[0px_2px_25px_#000e331a] border-0">
+                    <CardContent className="flex flex-col items-center gap-3 pt-4 pb-0 px-4 h-full">
+                      <div className="flex flex-col items-start gap-4 pt-0 pb-4 px-0 flex-1 w-full">
+                        <div className="flex flex-col items-start gap-2.5 flex-1 w-full">
+                          <Badge className="h-6 bg-[#ffefd4] text-[#e99400] hover:bg-[#ffefd4] rounded-lg font-body-text-12px-medium font-[number:var(--body-text-12px-medium-font-weight)] text-[length:var(--body-text-12px-medium-font-size)] tracking-[var(--body-text-12px-medium-letter-spacing)] leading-[var(--body-text-12px-medium-line-height)] [font-style:var(--body-text-12px-medium-font-style)]">
+                            Sarjana
+                          </Badge>
+                          <div className="flex flex-col items-start gap-2 w-full">
+                            <h4 className="w-full h-[43px] [font-family:'Inter',Helvetica] font-bold text-[#333333] text-base tracking-[0] leading-[22px] overflow-hidden text-ellipsis [display:-webkit-box] [-webkit-line-clamp:1] [-webkit-box-orient:vertical]">
+                              {program.title}
+                            </h4>
+                            <div className="flex flex-col items-start gap-1 w-full">
+                              <div className="flex flex-wrap items-start gap-[8px] w-full">
+                                <span className="flex-1 font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#333333] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
+                                  {program.faculty}
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-2.5 w-full rounded-[5px] overflow-hidden">
+                                <span className="text-[#808080] text-[length:var(--body-text-14px-regular-font-size)] leading-[var(--body-text-14px-regular-line-height)] flex-1 font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] tracking-[var(--body-text-14px-regular-letter-spacing)] [font-style:var(--body-text-14px-regular-font-style)]">
+                                  {program.department}
+                                </span>
+                              </div>
                             </div>
                           </div>
                         </div>
+                        <Button className="h-10 w-full bg-[#069dd8] hover:bg-[#069dd8]/90 rounded-[25px] font-body-text-14px-medium font-[number:var(--body-text-14px-medium-font-weight)] text-white text-[length:var(--body-text-14px-medium-font-size)] tracking-[var(--body-text-14px-medium-letter-spacing)] leading-[var(--body-text-14px-medium-line-height)] [font-style:var(--body-text-14px-medium-font-style)]">
+                          Daftar Sekarang
+                        </Button>
                       </div>
-                      <Button className="h-10 w-full bg-[#069dd8] hover:bg-[#069dd8]/90 rounded-[25px] font-body-text-14px-medium font-[number:var(--body-text-14px-medium-font-weight)] text-white text-[length:var(--body-text-14px-medium-font-size)] tracking-[var(--body-text-14px-medium-letter-spacing)] leading-[var(--body-text-14px-medium-line-height)] [font-style:var(--body-text-14px-medium-font-style)]">
-                        Daftar Sekarang
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                    </CardContent>
+                  </Card>
+                );
+
+                if (slug && programName) {
+                  return (
+                    <Link key={index} to={`/programs/${programName}/${programFilter}/${slug}`} className="block">
+                      {card}
+                    </Link>
+                  );
+                }
+
+                return card;
+              })}
             </div>
           </div>
           <div className="inline-flex items-center gap-5 justify-center">

@@ -1,16 +1,16 @@
 import { ChevronRightIcon } from "lucide-react";
-import React, { useState } from "react";
+import { useState } from "react";
+import { MainLayout } from "../../components/layout";
 import { Badge } from "../../components/ui/badge";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "../../components/ui/breadcrumb";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
-import { FooterSection } from "../ProgramList/sections/FooterSection/FooterSection";
 
 export const ApplyProgram = (): JSX.Element => {
   const [motivation, setMotivation] = useState("");
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <MainLayout>
       <div className="mx-auto max-w-[1200px] w-full px-6 py-10">
         <div className="mb-6">
           <Breadcrumb>
@@ -87,11 +87,7 @@ export const ApplyProgram = (): JSX.Element => {
           </div>
         </div>
       </div>
-
-      <div className="mt-auto">
-        <FooterSection />
-      </div>
-    </div>
+    </MainLayout>
   );
 };
 

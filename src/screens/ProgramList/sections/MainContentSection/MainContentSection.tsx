@@ -1,6 +1,6 @@
 import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon, ChevronUpIcon, SearchIcon } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Badge } from "../../../../components/ui/badge";
 import { Button } from "../../../../components/ui/button";
 import { Card, CardContent } from "../../../../components/ui/card";
@@ -92,6 +92,7 @@ const programsByType: Record<string, Array<{ title: string; faculty: string; dep
 
 export const MainContentSection = (): JSX.Element => {
   const { programName, programType } = useProgram();
+  const navigate = useNavigate();
 
   const [programFilter, setProgramFilter] = useState("spesialisasi");
   const [facultyFilter, setFacultyFilter] = useState("fitb");
@@ -188,7 +189,16 @@ export const MainContentSection = (): JSX.Element => {
               )}
             </button>
             {isProgramExpanded && (
-              <RadioGroup value={programFilter} onValueChange={setProgramFilter} className="flex flex-col gap-4">
+              <RadioGroup
+                value={programFilter}
+                onValueChange={(val) => {
+                  // keep UI in sync immediately, then navigate so URL becomes source of truth
+                  setProgramFilter(val);
+                  const pn = (programName || "sarjana").toString();
+                  navigate(`/programs/${pn}/${val}`);
+                }}
+                className="flex flex-col gap-4"
+              >
                 {programTypes.map((program) => (
                   <div key={program.id} className="flex items-start gap-5">
                     <RadioGroupItem
@@ -369,7 +379,6 @@ export const MainContentSection = (): JSX.Element => {
                     </Link>
                   );
                 }
-
                 return card;
               })}
             </div>

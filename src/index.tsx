@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ElementHomepage } from "./screens/Home";
-import ProgramDetail from "./screens/ProgramDetail/ProgramDetail";
+import { ProgramDetail } from "./screens/ProgramDetail/ProgramDetail";
 import { ProgramList } from "./screens/ProgramList";
 
 createRoot(document.getElementById("app") as HTMLElement).render(

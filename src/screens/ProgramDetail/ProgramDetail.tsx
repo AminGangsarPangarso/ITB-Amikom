@@ -8,6 +8,7 @@ import { Card, CardContent } from "../../components/ui/card";
 
 const programDetails: Record<string, any> = {
 	"struktur-lepas-pantai": {
+		degree: "Sarjana",
 		type: "Program Spesialisasi",
 		faculty: "FTSL / Teknik Kelautan",
 		title: "Struktur Lepas Pantai",
@@ -47,6 +48,7 @@ const programDetails: Record<string, any> = {
 		],
 	},
 	"fisika-bangunan": {
+		degree: "Sarjana",
 		type: "Program Minor",
 		faculty: "FTI / Teknik Fisika",
 		title: "Fisika Bangunan",
@@ -85,10 +87,117 @@ const programDetails: Record<string, any> = {
 			{ title: "Perencanaan Wilayah & Kota", faculty: "SAPPK", department: "Perencanaan Wilayah & Kota" },
 		],
 	},
+	"teknik-lingkungan": {
+		degree: "Sarjana",
+		type: "Program Double Major",
+		faculty: "FTI / Teknik Lingkungan",
+		title: "Teknik Lingkungan",
+		description:
+			"Bidang keilmuan yang mempelajari tindakan kuratif dan preventif untuk menyelamatkan lingkungan hidup yang terdiri dari air, tanah, udara, dan kesehatan lingkungan. Melalui pendekatan rekayasa teknik, efek negatif limbah dapat diminimalisir.",
+		minSKS: 14,
+		brochureUrl: "#",
+		requirements: [
+			"Terdaftar sebagai mahasiswa Program Studi Sarjana",
+			"Telah menempuh semester 3",
+			"Memiliki IPK ≥ 3.00",
+			"Telah mendapatkan persetujuan dari dosen pembimbing akademik",
+			"Menulis Motivation Letter dengan jumlah kata maksimal 100 kata",
+		],
+		registrationNote: "Akses pendaftaran tersedia mulai mahasiswa semester 3",
+		semesters: [
+			{
+				title: "Semester 3",
+				totalSKS: 12,
+				courses: [
+					{ no: 1, code: "BP5103", name: "Manajemen Sumberdaya Biologis", type: "MKWI", sks: 3, done: true },
+					{ no: 2, code: "BP5103", name: "Ekonomi Ekologi", type: "MKVP", sks: 3 },
+					{ no: 3, code: "BP5103", name: "Manajemen Bisnis Keanekaragaman Hayati", type: "MKOP", sks: 3 },
+					{ no: 4, code: "KL4220", name: "Analisis Elemen dan Sistem Kepariwisataan", type: "MKPB", sks: 3 },
+				],
+			},
+			{
+				title: "Semester 4",
+				totalSKS: 12,
+				courses: [
+					{ no: 1, code: "BP5201", name: "Etika Profesi", type: "MKWI", sks: 3, done: true },
+					{ no: 2, code: "BP5201", name: "Ekonomi Ekologi", type: "MKVP", sks: 3 },
+					{ no: 3, code: "BP5201", name: "Perancangan Proyek Akhir", type: "MKOP", sks: 3 },
+					{ no: 4, code: "BP5201", name: "Pariwisata Berbasis Masyarakat", type: "MKPB", sks: 3 },
+				],
+			},
+			{
+				title: "Semester 5",
+				totalSKS: 12,
+				courses: [
+					{ no: 1, code: "BP5103", name: "Manajemen Sumberdaya Biologis", type: "MKWI", sks: 3, done: true },
+					{ no: 2, code: "BP5103", name: "Ekonomi Ekologi", type: "MKVP", sks: 3 },
+					{ no: 3, code: "BP5103", name: "Manajemen Bisnis Keanekaragaman Hayati", type: "MKOP", sks: 3 },
+					{ no: 4, code: "KL4220", name: "Analisis Elemen dan Sistem Kepariwisataan", type: "MKPB", sks: 3 },
+				],
+			},
+			{
+				title: "Semester 6",
+				totalSKS: 12,
+				courses: [
+					{ no: 1, code: "BP5201", name: "Etika Profesi", type: "MKWI", sks: 3, done: true },
+					{ no: 2, code: "BP5201", name: "Ekonomi Ekologi", type: "MKVP", sks: 3 },
+					{ no: 3, code: "BP5201", name: "Perancangan Proyek Akhir", type: "MKOP", sks: 3 },
+					{ no: 4, code: "BP5201", name: "Pariwisata Berbasis Masyarakat", type: "MKPB", sks: 3 },
+				],
+			},
+		],
+		otherPrograms: [
+			{ title: "Teknik Lingkungan", faculty: "FTI", department: "" },
+			{ title: "Teknik Elektro", faculty: "STEI", department: "" },
+			{ title: "Teknik Material", faculty: "FTMD", department: "" },
+			{ title: "Teknik Elektro", faculty: "STEI", department: "" },
+		],
+	},
+	"pariwisata-hayati-berkelanjutan": {
+		degree: "Magister",
+		type: "Program Multidisiplin",
+		faculty: "SAPPK/Perencanaan Kepariwisataan • SITH / Biomanajemen",
+		title: "Pariwisata Hayati Berkelanjutan",
+		description:
+			"Program multidisiplin yang menggabungkan 2 program studi yakni Magister Biomanajemen SITH dan Magister Perencanaan Kepariwisataan SAPPK. Berfokus pada penguasaan keilmuan dan kemampuan penelitian serta penerapan di bidang pariwisata hayati.",
+		minSKS: 14,
+		brochureUrl: "#",
+		requirements: [
+			"Ijazah dan transkrip dari jenjang pendidikan sebelumnya",
+			"Melampirkan surat pernyataan tujuan (statement of purpose) dan portofolio",
+			"Telah mendapatkan kesediaan dari calon dosen pembimbing",
+			"Telah lolos seleksi Ujian Potensi Dasar Akademik (UPDA Kampus XYZ)",
+			"Telah mengikuti English Language Proficiency Test",
+		],
+		registrationNote: "Akses pendaftaran tersedia mulai mahasiswa semester 3",
+		courses: [
+			{ no: 1, code: "BP5103", name: "Laboratorium Fisika Bangunan", sks: 3 },
+			{ no: 2, code: "BP5103", name: "Fisika Bangunan", sks: 2 },
+			{ no: 3, code: "BP5103", name: "Manajemen Bisnis Keanekaragaman Hayati", sks: 3 },
+			{ no: 4, code: "BP5103", name: "Analisis Elemen dan Sistem Kepariwisataan", sks: 3 },
+			{ no: 5, code: "BP5201", name: "Etika Profesi", sks: 3 },
+			{ no: 6, code: "BP5201", name: "Studi Kasus dalam Biomanajemen", sks: 3 },
+			{ no: 7, code: "BP5201", name: "Perancangan Proyek Akhir", sks: 3 },
+			{ no: 8, code: "BP5201", name: "Pariwisata Berbasis Masyarakat", sks: 3 },
+			{ no: 9, code: "BP6902", name: "Proyek Akhir dan Seminar", sks: 3 },
+			{ no: 10, code: "BP6114", name: "Rekayasa Sosial dalam Biomanajemen", sks: 3 },
+			{ no: 11, code: "PK5106", name: "Ekowisata Berkelanjutan", sks: 3 },
+			{ no: 12, code: "PK5106", name: "Metode Analisis Kepariwisataan", sks: 3 },
+			{ no: 13, code: "PK5103", name: "Perencanaan Pengembangan Kepariwisataan", sks: 3 },
+			{ no: 14, code: "BP6002", name: "Tesis dan Sidang Akhir", sks: 3 },
+		],
+		totalSKS: 16,
+		otherPrograms: [
+			{ title: "Teknologi Nano", faculty: "FTSL/Teknik Kelautan SAPPK/Perencanaan Kepariwisataan" },
+			{ title: "Teknologi Kesehatan", faculty: "FTSL/Teknik Kelautan SAPPK/Perencanaan Kepariwisataan" },
+			{ title: "Pendidikan Sains 4.0", faculty: "FTSL/Teknik Kelautan SAPPK/Perencanaan Kepariwisataan" },
+			{ title: "Digital Technopreneurship", faculty: "FTSL/Teknik Kelautan SAPPK/Perencanaan Kepariwisataan" },
+		],
+	},
 };
 
 export const ProgramDetail = (): JSX.Element => {
-	const { programSlug } = useParams();
+	const { programSlug, programName, programType } = useParams();
 	const detail = programDetails[programSlug ?? ""];
 
 	if (!detail) {
@@ -115,13 +224,20 @@ export const ProgramDetail = (): JSX.Element => {
 								<ChevronRightIcon className="w-4 h-4" />
 							</BreadcrumbSeparator>
 							<BreadcrumbItem>
-								<BreadcrumbLink href="#">Sarjana</BreadcrumbLink>
+								<BreadcrumbLink href="#">{(programName ?? "Sarjana").toString().replace(/\b\w/g, (c) => c.toUpperCase())}</BreadcrumbLink>
 							</BreadcrumbItem>
 							<BreadcrumbSeparator>
 								<ChevronRightIcon className="w-4 h-4" />
 							</BreadcrumbSeparator>
 							<BreadcrumbItem>
-								<BreadcrumbLink href="#">{detail.type}</BreadcrumbLink>
+												<BreadcrumbLink href="#">{
+													({
+														"spesialisasi": "Spesialisasi",
+														"minor": "Minor",
+														"double-major": "Double Major",
+														"multidisiplin": "Multidisiplin",
+													} as Record<string, string>)[(programType ?? "spesialisasi").toString()] ?? detail.type
+												}</BreadcrumbLink>
 							</BreadcrumbItem>
 							<BreadcrumbSeparator>
 								<ChevronRightIcon className="w-4 h-4" />
@@ -137,10 +253,10 @@ export const ProgramDetail = (): JSX.Element => {
 				<div className="flex flex-col lg:flex-row gap-8">
 					{/* Left content */}
 					<div className="flex-1 flex flex-col gap-6">
-						<div className="flex gap-2 mb-2">
-							<Badge className="bg-[#ffefd4] text-[#e99400] rounded-lg">Sarjana</Badge>
-							<Badge className="bg-[#e6f7ff] text-[#069dd8] rounded-lg">{detail.type}</Badge>
-						</div>
+									<div className="flex gap-2 mb-2">
+										<Badge className="bg-[#ffefd4] text-[#e99400] rounded-lg">{detail.degree}</Badge>
+										<Badge className="bg-[#e6f7ff] text-[#069dd8] rounded-lg">{detail.type}</Badge>
+									</div>
 						<div className="text-[#808080] text-sm mb-1">{detail.faculty}</div>
 						<h1 className="text-3xl font-bold text-[#333] mb-2">{detail.title}</h1>
 						<p className="text-[#333] text-base mb-2">{detail.description}</p>
@@ -158,10 +274,10 @@ export const ProgramDetail = (): JSX.Element => {
 					<div className="w-full lg:w-[340px]">
 						<Card className="rounded-2xl shadow-[0px_2px_25px_#000e331a]">
 							<CardContent className="flex flex-col gap-4 p-6">
-								<div className="flex gap-2 mb-2">
-									<Badge className="bg-[#ffefd4] text-[#e99400] rounded-lg">Sarjana</Badge>
-									<Badge className="bg-[#e6f7ff] text-[#069dd8] rounded-lg">{detail.type}</Badge>
-								</div>
+												<div className="flex gap-2 mb-2">
+													<Badge className="bg-[#ffefd4] text-[#e99400] rounded-lg">{detail.degree}</Badge>
+													<Badge className="bg-[#e6f7ff] text-[#069dd8] rounded-lg">{detail.type}</Badge>
+												</div>
 								<div className="text-[#808080] text-sm mb-1">{detail.faculty}</div>
 								<h2 className="text-lg font-bold text-[#333] mb-2">{detail.title}</h2>
 								<div className="text-[#808080] text-base">SKS Minimal <span className="font-bold text-[#069dd8]">{detail.minSKS}</span></div>
@@ -197,44 +313,91 @@ export const ProgramDetail = (): JSX.Element => {
 					</ul>
 				</div>
 
-				{/* Program structure */}
-				<div className="mt-10">
-					<h2 className="text-xl font-bold text-[#333] mb-4">Struktur Program</h2>
-					<div className="text-[#333] text-base mb-4">Total jumlah SKS yang ditawarkan untuk program ini adalah <span className="font-bold">{detail.totalSKS} SKS</span>, yang terdiri dari mata kuliah dari <span className="font-bold">semester 5 hingga jenjang S2</span>. Tersedia beragam mata kuliah yang dapat dipilih dan dapat disesuaikan dengan kebutuhan mahasiswa. Perlu diperhatikan bahwa beberapa mata kuliah memiliki prasyarat dari mata kuliah yang wajib harus diambil. Setelah menyelesaikan program, mahasiswa akan mendapatkan pengakuan khusus mengenai spesialisasi/minor pada transkrip akademik mereka.</div>
-					<div className="overflow-x-auto">
-						<table className="min-w-[600px] w-full border-collapse rounded-xl overflow-hidden shadow">
-							<thead className="bg-[#e6f7ff]">
-								<tr>
-									<th className="py-2 px-4 text-left font-bold text-[#069dd8]">No</th>
-									<th className="py-2 px-4 text-left font-bold text-[#069dd8]">Kode</th>
-									<th className="py-2 px-4 text-left font-bold text-[#069dd8]">Mata Kuliah</th>
-									<th className="py-2 px-4 text-left font-bold text-[#069dd8]">SKS</th>
-								</tr>
-							</thead>
-							<tbody>
-								{detail.courses.map((course: any) => (
-									<tr key={course.code} className="border-b last:border-b-0">
-										<td className="py-2 px-4">{course.no}</td>
-										<td className="py-2 px-4">{course.code}</td>
-										<td className="py-2 px-4">
-											<span className="text-[#069dd8] underline cursor-pointer">{course.name}</span>
-											{course.done && (
-												<span className="ml-2 px-2 py-0.5 bg-[#e6f7ff] text-[#069dd8] rounded text-xs">Telah Diambil</span>
-											)}
-										</td>
-										<td className="py-2 px-4">{course.sks}</td>
-									</tr>
-								))}
-							</tbody>
-							<tfoot>
-								<tr className="bg-[#f5f5f5]">
-									<td colSpan={3} className="py-2 px-4 text-right font-bold text-[#333]">Total SKS</td>
-									<td className="py-2 px-4 font-bold text-[#069dd8]">{detail.totalSKS}</td>
-								</tr>
-							</tfoot>
-						</table>
-					</div>
-				</div>
+						{/* Program structure */}
+						<div className="mt-10">
+							<h2 className="text-xl font-bold text-[#333] mb-4">Struktur Program</h2>
+							{detail.semesters ? (
+											<div className="overflow-x-auto">
+												<table className="min-w-[600px] w-full border-collapse rounded-xl overflow-hidden shadow">
+													<thead>
+														<tr className="bg-[#0d5c92] text-white">
+															<th className="py-2 px-4 text-left font-semibold">No</th>
+															<th className="py-2 px-4 text-left font-semibold">Kode</th>
+															<th className="py-2 px-4 text-left font-semibold">Mata Kuliah</th>
+															<th className="py-2 px-4 text-left font-semibold">Jenis MK</th>
+															<th className="py-2 px-4 text-left font-semibold">SKS</th>
+														</tr>
+													</thead>
+													<tbody>
+														{detail.semesters.map((sem: any, sIdx: number) => (
+															<>
+																<tr key={`sem-${sIdx}`} className="bg-[#77a9cf] text-white font-semibold">
+																	<td colSpan={5} className="py-2 px-4 rounded-none">{sem.title}</td>
+																</tr>
+																{sem.courses.map((course: any) => (
+																	<tr key={`${sem.title}-${course.code}`} className="border-b last:border-b-0">
+																		<td className="py-2 px-4">{course.no}</td>
+																		<td className="py-2 px-4">{course.code}</td>
+																		<td className="py-2 px-4">
+																			<span className="text-[#069dd8] underline cursor-pointer">{course.name}</span>
+																			{course.done && (
+																				<span className="px-2 py-0.5 bg-[#e6f7e6] text-[#27ae60] rounded text-xs">Telah Diambil</span>
+																			)}
+																		</td>
+																		<td className="py-2 px-4">{course.type}</td>
+																		<td className="py-2 px-4">{course.sks}</td>
+																	</tr>
+																))}
+																<tr className="bg-[#f5f5f5]">
+																	<td colSpan={4} className="py-2 px-4 text-right font-bold text-[#333]">Total SKS</td>
+																	<td className="py-2 px-4 font-bold text-[#069dd8]">{sem.totalSKS}</td>
+																</tr>
+															</>
+														))}
+													</tbody>
+												</table>
+											</div>
+							) : (
+								<>
+									<div className="text-[#333] text-base mb-4">Total jumlah SKS yang ditawarkan untuk program ini adalah <span className="font-bold">{detail.totalSKS} SKS</span>. Tersedia beragam mata kuliah yang dapat dipilih dan dapat disesuaikan dengan kebutuhan mahasiswa.</div>
+									<div className="overflow-x-auto">
+										<table className="min-w-[600px] w-full border-collapse rounded-xl overflow-hidden shadow">
+											<thead className="bg-[#e6f7ff]">
+												<tr>
+													<th className="py-2 px-4 text-left font-bold text-[#069dd8]">No</th>
+													<th className="py-2 px-4 text-left font-bold text-[#069dd8]">Kode</th>
+													<th className="py-2 px-4 text-left font-bold text-[#069dd8]">Mata Kuliah</th>
+													<th className="py-2 px-4 text-left font-bold text-[#069dd8]">SKS</th>
+												</tr>
+											</thead>
+											<tbody>
+												{detail.courses?.map((course: any) => (
+													<tr key={course.code} className="border-b last:border-b-0">
+														<td className="py-2 px-4">{course.no}</td>
+														<td className="py-2 px-4">{course.code}</td>
+														<td className="py-2 px-4">
+															<div className="flex justify-between items-center w-full">
+																<span className="text-[#069dd8] underline cursor-pointer">{course.name}</span>
+																{course.done && (
+																	<span className="px-2 py-0.5 bg-[#e6f7e6] text-[#27ae60] rounded text-xs">Telah Diambil</span>
+																)}
+															</div>
+														</td>
+														<td className="py-2 px-4">{course.sks}</td>
+													</tr>
+												))}
+											</tbody>
+											<tfoot>
+												<tr className="bg-[#f5f5f5]">
+													<td colSpan={3} className="py-2 px-4 text-right font-bold text-[#333]">Total SKS</td>
+													<td className="py-2 px-4 font-bold text-[#069dd8]">{detail.totalSKS}</td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+								</>
+							)}
+						</div>
 
 				{/* Other programs */}
 				<div className="mt-10">

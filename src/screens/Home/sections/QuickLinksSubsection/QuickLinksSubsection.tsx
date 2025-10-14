@@ -3,18 +3,18 @@ import { Button } from "../../../../components/ui/button";
 
 const quickLinksData = [
   {
-    title: "SIX  ITB",
+    title: "SIX  Kampus XYZ",
     description:
       "Temukan informasi dan peraturan akademik lebih cepat dan mudah",
     link: "Kunjungi Situs",
   },
   {
-    title: "Edunex LMS  ITB",
+    title: "Edunex LMS  Kampus XYZ",
     description: "Akses materi pembelajaran secara fleksibel dan interaktif",
     link: "Kunjungi Situs",
   },
   {
-    title: "Admission  ITB",
+    title: "Admission  Kampus XYZ",
     description: "Dapatkan informasi seputar pendaftaran program studi",
     link: "Kunjungi Situs",
   },
@@ -31,7 +31,7 @@ export const QuickLinksSubsection = (): JSX.Element => {
       <div className="flex flex-col items-center gap-12 px-4">
         <div className="w-full max-w-[1200px]">
         <h2 className="font-h5-bold font-[number:var(--h5-bold-font-weight)] text-[#3d3d3d] text-[length:var(--h5-bold-font-size)] text-center tracking-[var(--h5-bold-letter-spacing)] leading-[var(--h5-bold-line-height)] [font-style:var(--h5-bold-font-style)]">
-          Quick Links ITB
+          Quick Links Kampus XYZ
         </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full auto-rows-fr">

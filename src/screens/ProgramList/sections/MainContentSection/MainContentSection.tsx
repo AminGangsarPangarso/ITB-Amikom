@@ -20,7 +20,7 @@ const programTypes = [
 ];
 
 const faculties = [
-  { id: "fitb", label: "Fakultas Ilmu dan Teknologi Kebumian (FITB)", checked: true },
+  { id: "fKampus XYZ", label: "Fakultas Ilmu dan Teknologi Kebumian (FKampus XYZ)", checked: true },
   { id: "fmipa", label: "Fakultas Matematika dan Ilmu Pengetahuan Alam (FMIPA)", checked: false },
   { id: "fsrd", label: "Fakultas Seni Rupa dan Desain (FSRD)", checked: false },
   { id: "fti", label: "Fakultas Teknologi Industri (FTI)", checked: false },
@@ -39,14 +39,14 @@ const studyPrograms = [
 // from `programFilter` later so existing render code doesn't need changes.
 const programsByType: Record<string, Array<{ title: string; faculty: string; department?: string, slug? : string }>> = {
   "spesialisasi": [
-    { title: "Struktur Lepas Pantai", faculty: "FITB", department: "Meteorologi", slug: "struktur-lepas-pantai" },
-    { title: "Teknik Pantai dan Kawasan Pesisi", faculty: "FITB", department: "Meteorologi" },
-    { title: "Pelabuhan, Transportasi Laut dan Logistik", faculty: "FITB", department: "Meteorologi" },
-    { title: "Lingkungan Laut, Reklamasi dan Pengerukan", faculty: "FITB", department: "Meteorologi" },
-    { title: "Teknik Geodesi Terapan", faculty: "FITB", department: "Teknik Geodesi dan Geomatika" },
-    { title: "Teknik Geologi Terapan", faculty: "FITB", department: "Teknik Geologi" },
-    { title: "Pelabuhan dan Transportasi Laut", faculty: "FITB", department: "Oseanografi" },
-    { title: "Rekayasa Pantai dan Pesisir", faculty: "FITB", department: "Meteorologi" },
+    { title: "Struktur Lepas Pantai", faculty: "FKampus XYZ", department: "Meteorologi", slug: "struktur-lepas-pantai" },
+    { title: "Teknik Pantai dan Kawasan Pesisi", faculty: "FKampus XYZ", department: "Meteorologi" },
+    { title: "Pelabuhan, Transportasi Laut dan Logistik", faculty: "FKampus XYZ", department: "Meteorologi" },
+    { title: "Lingkungan Laut, Reklamasi dan Pengerukan", faculty: "FKampus XYZ", department: "Meteorologi" },
+    { title: "Teknik Geodesi Terapan", faculty: "FKampus XYZ", department: "Teknik Geodesi dan Geomatika" },
+    { title: "Teknik Geologi Terapan", faculty: "FKampus XYZ", department: "Teknik Geologi" },
+    { title: "Pelabuhan dan Transportasi Laut", faculty: "FKampus XYZ", department: "Oseanografi" },
+    { title: "Rekayasa Pantai dan Pesisir", faculty: "FKampus XYZ", department: "Meteorologi" },
   ],
 
   "minor": [
@@ -58,11 +58,11 @@ const programsByType: Record<string, Array<{ title: string; faculty: string; dep
     { title: "Kimia Organik", faculty: "FMIPA", department: "Kimia" },
     { title: "Biokimia Umum", faculty: "FMIPA", department: "Kimia" },
     { title: "Kimia Analitik", faculty: "FMIPA", department: "Kimia" },
-    { title: "Teknologi Nano", faculty: "FITB", department: "Meteorologi" },
+    { title: "Teknologi Nano", faculty: "FKampus XYZ", department: "Meteorologi" },
   ],
 
   "double-major": [
-    { title: "Teknik Lingkungan", faculty: "FTMD", department: "Teknik Lingkungan" },
+    { title: "Teknik Lingkungan", faculty: "FTMD", department: "Teknik Lingkungan", slug: "teknik-lingkungan" },
     { title: "Teknik Elektro", faculty: "STEI", department: "Teknik Elektro" },
     { title: "Teknik Material", faculty: "FTMD", department: "Teknik Material" },
     { title: "Teknik Mesin", faculty: "FTMD", department: "Teknik Mesin" },
@@ -73,15 +73,15 @@ const programsByType: Record<string, Array<{ title: string; faculty: string; dep
   ],
 
   "multidisiplin": [
-    { title: "Teknologi Nano", faculty: "FITB", department: "Meteorologi" },
-    { title: "Teknologi Kesehatan", faculty: "FITB", department: "Meteorologi" },
+    { title: "Teknologi Nano", faculty: "FKampus XYZ", department: "Meteorologi" },
+    { title: "Teknologi Kesehatan", faculty: "FKampus XYZ", department: "Meteorologi" },
     { title: "Pendidikan Sains 4.0", faculty: "SAPPK", department: "Perencanaan Kepariwisataan" },
-    { title: "Digital Technopreneurship", faculty: "FITB", department: "Interdisipliner" },
-    { title: "Smart-X", faculty: "FITB", department: "Interdisipliner" },
-    { title: "Material Baterai", faculty: "FITB", department: "Interdisipliner" },
-    { title: "Kebencanaan", faculty: "FITB", department: "Meteorologi" },
-    { title: "Pariwisata Hayati Berkelanjutan", faculty: "SAPPK", department: "Perencanaan Kepariwisataan" },
-    { title: "Kepemimpinan Desain", faculty: "FITB", department: "Interdisipliner" },
+    { title: "Digital Technopreneurship", faculty: "FKampus XYZ", department: "Interdisipliner" },
+    { title: "Smart-X", faculty: "FKampus XYZ", department: "Interdisipliner" },
+    { title: "Material Baterai", faculty: "FKampus XYZ", department: "Interdisipliner" },
+    { title: "Kebencanaan", faculty: "FKampus XYZ", department: "Meteorologi" },
+    { title: "Pariwisata Hayati Berkelanjutan", faculty: "SAPPK", department: "Perencanaan Kepariwisataan", slug: "pariwisata-hayati-berkelanjutan" },
+    { title: "Kepemimpinan Desain", faculty: "FKampus XYZ", department: "Interdisipliner" },
   ],
 };
 
@@ -95,7 +95,7 @@ export const MainContentSection = (): JSX.Element => {
   const navigate = useNavigate();
 
   const [programFilter, setProgramFilter] = useState("spesialisasi");
-  const [facultyFilter, setFacultyFilter] = useState("fitb");
+  const [facultyFilter, setFacultyFilter] = useState("fKampus XYZ");
   const [selectedPrograms, setSelectedPrograms] = useState<string[]>(studyPrograms.map(p => p.id));
   const [isProgramExpanded, setIsProgramExpanded] = useState(true);
   const [isFacultyExpanded, setIsFacultyExpanded] = useState(true);
@@ -111,7 +111,7 @@ export const MainContentSection = (): JSX.Element => {
       setFacultyFilter("fmipa");
     } else if (pn === "sarjana") {
       setProgramFilter("spesialisasi");
-      setFacultyFilter("fitb");
+      setFacultyFilter("fKampus XYZ");
     } else if (pn === "profesi") {
       setProgramFilter("spesialisasi");
       setFacultyFilter("fti");
@@ -319,7 +319,7 @@ export const MainContentSection = (): JSX.Element => {
               <div className="flex items-center justify-between w-full">
                 <div className="inline-flex items-center gap-1">
                   <span className="[font-family:'Inter',Helvetica] font-normal text-[#808080] text-base tracking-[0] leading-[26px]">
-                    {`Program ${programName ?? ""} ${selectedProgramTypeLabel} FITB`}
+                    {`Program ${programName ?? ""} ${selectedProgramTypeLabel} FKampus XYZ`}
                   </span>
                   <span className="font-h11-bold font-[number:var(--h11-bold-font-weight)] text-[#069dd8] text-[length:var(--h11-bold-font-size)] tracking-[var(--h11-bold-letter-spacing)] leading-[var(--h11-bold-line-height)] [font-style:var(--h11-bold-font-style)]">
                     ({programs.length} Program)

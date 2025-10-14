@@ -84,7 +84,7 @@ export const AltSubsection = (): JSX.Element => {
 
         <div className="flex flex-col gap-12 w-full lg:w-[494px]">
           <h2 className="font-h5-bold font-[number:var(--h5-bold-font-weight)] text-[#3d3d3d] text-[length:var(--h5-bold-font-size)] tracking-[var(--h5-bold-letter-spacing)] leading-[var(--h5-bold-line-height)] [font-style:var(--h5-bold-font-style)]">
-            Layanan Akademik ITB
+            Layanan Akademik Kampus XYZ
           </h2>
 
           <div className="flex flex-col gap-8">

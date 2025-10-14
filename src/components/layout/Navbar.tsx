@@ -16,7 +16,7 @@ const programDropdownData = {
     title: "Sarjana",
     description: "Jenjang pendidikan awal bagi lulusan sekolah menengah atas, ditempuh dalam waktu 4 tahun.",
     programs: {
-      itb: ["spesialisasi", "minor", "double-major", "multidisiplin"],
+      Kampus XYZ: ["spesialisasi", "minor", "double-major", "multidisiplin"],
       international: ["students-exchange", "double-major", "summer-school"]
     },
     link: "/programs/sarjana/spesialisasi"
@@ -25,7 +25,7 @@ const programDropdownData = {
     title: "Pascasarjana", 
     description: "Jenjang pendidikan lanjutan yang mencakup program magister (2 tahun) dan doktor (3 tahun).",
     programs: {
-      itb: ["Multidisiplin"],
+      Kampus XYZ: ["Multidisiplin"],
       international: ["Students Exchange", "Double Major", "Summer School"]
     },
     link: "/programs/pascasarjana/multidisiplin"
@@ -34,7 +34,7 @@ const programDropdownData = {
     title: "Profesi",
     description: "Jenjang pendidikan tinggi yang berfokus pada keahlian khusus setelah sarjana.",
     programs: {
-      itb: [],
+      Kampus XYZ: [],
       international: []
     },
     link: "/"
@@ -138,11 +138,11 @@ export const Navbar = (): JSX.Element => {
                                 </p>
 
                                 <div className="gap-4 flex justify-start items-start">
-                                  {program.programs.itb.length > 0 && (
+                                  {program.programs.Kampus XYZ.length > 0 && (
                                     <div>
-                                      <h4 className="text-xs font-medium text-gray-500 mb-1">Program ITB</h4>
+                                      <h4 className="text-xs font-medium text-gray-500 mb-1">Program Kampus XYZ</h4>
                                       <div className="space-y-1">
-                                        {program.programs.itb.map((prog, idx) => (
+                                        {program.programs.Kampus XYZ.map((prog, idx) => (
                                           <Link key={idx} to={`/programs/${key}/${prog}`} className="text-xs text-gray-700 hover:text-[#069dd8] cursor-pointer transition-colors block">
                                             {prog.replace(/-/g, " ")}
                                           </Link>

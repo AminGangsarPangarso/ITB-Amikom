@@ -1,6 +1,6 @@
 import { ChevronRightIcon } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
 import { MainLayout } from "../../components/layout";
 import { Badge } from "../../components/ui/badge";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "../../components/ui/breadcrumb";

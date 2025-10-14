@@ -1,10 +1,12 @@
 import { ChevronRightIcon } from "lucide-react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { MainLayout } from "../../components/layout";
 import { Badge } from "../../components/ui/badge";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "../../components/ui/breadcrumb";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
+import { getApplications, type Application } from "../../lib/applicationStorage";
 
 const programDetails: Record<string, any> = {
 	"struktur-lepas-pantai": {
@@ -198,7 +200,65 @@ const programDetails: Record<string, any> = {
 
 export const ProgramDetail = (): JSX.Element => {
 	const { programSlug, programName, programType } = useParams();
+	const navigate = useNavigate();
 	const detail = programDetails[programSlug ?? ""];
+	const [existingApplication, setExistingApplication] = useState<Application | null>(null);
+
+	useEffect(() => {
+		// Check if this program has been applied for
+		const applications = getApplications();
+		const found = applications.find(app => app.programSlug === programSlug);
+		setExistingApplication(found || null);
+	}, [programSlug]);
+
+	const handleDaftar = () => {
+		if (existingApplication) {
+			// If already applied, go to profile
+			navigate('/profile');
+		} else {
+			// If not applied, go to apply page
+			navigate(`/programs/${programName}/${programType}/${programSlug}/apply`);
+		}
+	};
+
+	const getButtonConfig = () => {
+		if (!existingApplication) {
+			return {
+				label: "Daftar Sekarang",
+				className: "bg-[#069dd8] hover:bg-[#069dd8]/90",
+				disabled: false,
+			};
+		}
+
+		switch (existingApplication.status) {
+			case "sedang-ditinjau":
+				return {
+					label: "Sedang Ditinjau",
+					className: "bg-gray-300 cursor-not-allowed",
+					disabled: true,
+				};
+			case "program-selesai":
+				return {
+					label: "Program Selesai",
+					className: "bg-[#069dd8] hover:bg-[#069dd8]/90",
+					disabled: false,
+				};
+			case "permintaan-ditolak":
+				return {
+					label: "Permintaan Ditolak",
+					className: "bg-[#ff4d4f] hover:bg-[#ff4d4f]/90",
+					disabled: false,
+				};
+			default:
+				return {
+					label: "Daftar Sekarang",
+					className: "bg-[#069dd8] hover:bg-[#069dd8]/90",
+					disabled: false,
+				};
+		}
+	};
+
+	const buttonConfig = getButtonConfig();
 
 	if (!detail) {
 		return (
@@ -266,7 +326,13 @@ export const ProgramDetail = (): JSX.Element => {
 								<span>Unduh Brosur</span>
 							</a>
 						</div>
-						<Button className="h-10 w-[180px] bg-[#069dd8] hover:bg-[#069dd8]/90 rounded-[25px] text-white font-medium">Daftar Sekarang</Button>
+						<Button 
+							onClick={handleDaftar} 
+							className={`h-10 w-[180px] ${buttonConfig.className} rounded-[25px] text-white font-medium`}
+							disabled={buttonConfig.disabled}
+						>
+							{buttonConfig.label}
+						</Button>
 						<div className="text-xs text-[#808080] mt-2">{detail.registrationNote}</div>
 					</div>
 
@@ -284,7 +350,13 @@ export const ProgramDetail = (): JSX.Element => {
 								<a href={detail.brochureUrl} className="text-[#069dd8] text-base flex items-center gap-2 underline">
 									<span>Unduh Brosur</span>
 								</a>
-								<Button className="h-10 w-full bg-[#069dd8] hover:bg-[#069dd8]/90 rounded-[25px] text-white font-medium">Daftar Sekarang</Button>
+								<Button 
+									onClick={handleDaftar} 
+									className={`h-10 w-full ${buttonConfig.className} rounded-[25px] text-white font-medium`}
+									disabled={buttonConfig.disabled}
+								>
+									{buttonConfig.label}
+								</Button>
 								<div className="text-xs text-[#808080] mt-2">{detail.registrationNote}</div>
 							</CardContent>
 						</Card>
@@ -415,14 +487,20 @@ export const ProgramDetail = (): JSX.Element => {
 											<span className="font-body-text-14px-regular text-[#333333]">
 												{prog.faculty}
 											</span>
-											<span className="text-[#808080]">
-												{prog.department}
-											</span>
-										</div>
-										<Button className="h-10 w-full bg-[#069dd8] hover:bg-[#069dd8]/90 rounded-[25px] text-white font-medium">Daftar Sekarang</Button>
+										<span className="text-[#808080]">
+											{prog.department}
+										</span>
 									</div>
-								</CardContent>
-							</Card>
+									<Button 
+										onClick={handleDaftar} 
+										className={`h-10 w-full ${buttonConfig.className} rounded-[25px] text-white font-medium`}
+										disabled={buttonConfig.disabled}
+									>
+										{buttonConfig.label}
+									</Button>
+								</div>
+							</CardContent>
+						</Card>
 						))}
 					</div>
 				</div>

@@ -1,7 +1,6 @@
 import { ChevronDownIcon } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "../ui/button";
 
 const topNavLinks = [{ label: "Berita dan Acara" }, { label: "Hubungi Kami" }];
 
@@ -184,12 +183,26 @@ export const Navbar = (): JSX.Element => {
 
               <div className="inline-flex items-center justify-end gap-3">
                 <div className="inline-flex items-center justify-end gap-4">
-                  <Button
-                    variant="outline"
-                    className="w-28 h-12 rounded-3xl border-[#069dd8] text-[#069dd8] font-body-text-16px-medium font-[number:var(--body-text-16px-medium-font-weight)] text-[length:var(--body-text-16px-medium-font-size)] tracking-[var(--body-text-16px-medium-letter-spacing)] leading-[var(--body-text-16px-medium-line-height)] [font-style:var(--body-text-16px-medium-font-style)] hover:bg-[#069dd8] hover:text-white"
-                  >
-                    Login
-                  </Button>
+                  {/* Profile Section */}
+                  <Link to="/profile" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                    <img 
+                      src="/frame-427322943-1.png" 
+                      alt="Profile" 
+                      className="w-10 h-10 rounded-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const fallback = document.createElement('div');
+                        fallback.className = 'w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center';
+                        fallback.innerHTML = '<span class="text-gray-600 font-semibold text-sm">IM</span>';
+                        target.parentElement?.appendChild(fallback);
+                      }}
+                    />
+                    <div className="flex flex-col items-start">
+                      <div className="font-semibold text-[#333333] text-sm">Ismail Mail</div>
+                      <div className="text-xs text-[#808080]">FTSL/Teknik Kelautan</div>
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>

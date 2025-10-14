@@ -80,7 +80,7 @@ export const HeroUtamaSubsection = (): JSX.Element => {
               </Button>
 
               <div className="relative w-8 h-8 bg-[#e5e5e580] rounded-full backdrop-blur-md flex items-center justify-center">
-                <div className="inline-flex items-center gap-1 text-blue-Kampus XYZ text-sm">
+                <div className="inline-flex items-center gap-1 text-blue-Kampus-XYZ text-sm">
                   <span className="font-medium">2</span>
                   <span>/</span>
                   <span className="text-[10px]">3</span>

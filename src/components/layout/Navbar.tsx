@@ -2,7 +2,7 @@ import { ChevronDownIcon } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const topNavLinks = [{ label: "Berita dan Acara" }, { label: "Hubungi Kami" }];
+const topNavLinks = [{ label: "Berita dan Acara", link: "/news" }, { label: "Hubungi Kami", link: "/contact" }];
 
 const mainNavItems = [
   { label: "Program", hasDropdown: true },
@@ -53,12 +53,13 @@ export const Navbar = (): JSX.Element => {
 
               <div className="inline-flex items-center justify-center gap-6">
                 {topNavLinks.map((link, index) => (
-                  <button
+                  <a
+                    href={link.link}
                     key={index}
                     className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-white text-[length:var(--body-text-14px-regular-font-size)] text-center tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)] hover:opacity-80 transition-opacity"
                   >
                     {link.label}
-                  </button>
+                  </a>
                 ))}
 
                 <div className="inline-flex items-center gap-1 px-2.5 py-1.5 bg-white rounded-[100px] shadow-blur-7px cursor-pointer hover:opacity-90 transition-opacity">

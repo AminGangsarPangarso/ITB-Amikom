@@ -6,7 +6,7 @@ import { Card, CardContent } from "../../../../components/ui/card";
 
 const newsData = [
   {
-    title: "Beasiswa LPDP ITB Batch 2 Khusus Pendaftar Daerah Afirmasi",
+    title: "Beasiswa LPDP Kampus XYZ Batch 2 Khusus Pendaftar Daerah Afirmasi",
     date: "19 Juni 2024",
     badge: "Beasiswa",
     gradientOverlay:
@@ -21,7 +21,7 @@ const newsData = [
   },
   {
     title:
-      "Sosialisasi SNBP, SNBT, dan Penerimaan Mahasiswa Baru 2024 di ITB Kampus Cirebon",
+      "Sosialisasi SNBP, SNBT, dan Penerimaan Mahasiswa Baru 2024 di Kampus XYZ Kampus Cirebon",
     date: "6 Mei 2024",
     badge: "Sosialisasi",
     gradientOverlay:

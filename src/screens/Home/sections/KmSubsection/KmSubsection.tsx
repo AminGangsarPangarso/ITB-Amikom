@@ -83,7 +83,7 @@ export const KmSubsection = (): JSX.Element => {
 
           <div className="flex flex-col w-[467px] gap-8">
             <p className="[font-family:'Inter',Helvetica] font-normal text-[#4c4c4c] text-lg tracking-[0] leading-[26px]">
-              ITB berkontribusi untuk pengembangan dan pemberdayaan masyarakat
+              Kampus XYZ berkontribusi untuk pengembangan dan pemberdayaan masyarakat
               melalui KKN Tematik, Layanan Masyarakat seperti pelatihan,
               Pengembangan Masyarakat, dan Kemitraan.
             </p>

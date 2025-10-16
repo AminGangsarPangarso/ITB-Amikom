@@ -39,9 +39,9 @@ export const FooterSection = (): JSX.Element => {
               <MapPinIcon className="w-5 h-5 flex-shrink-0 text-[#3d3d3d]" />
 
               <div className="flex-1 font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#3d3d3d] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
-                Kantor Direktorat Pendidikan ITB
+                Kantor Direktorat Pendidikan Kampus XYZ
                 <br />
-                Gedung CCAR ITB Lantai 4<br />
+                Gedung CCAR Kampus XYZ Lantai 4<br />
                 Jalan Tamansari Nomor 64 Bandung 40116
               </div>
             </div>

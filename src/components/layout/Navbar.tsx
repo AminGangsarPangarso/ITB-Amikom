@@ -47,7 +47,7 @@ export const Navbar = (): JSX.Element => {
     <nav className="w-full inline-flex flex-col items-start relative">
       <div className="w-full flex flex-col items-start">
         <div className="flex flex-col w-full items-end justify-center gap-2.5 px-[71px] py-2.5 bg-[#0660a6] border-b-[0.6px] [border-bottom-style:solid] border-[#cccccc]">
-          <div className="inline-flex items-center justify-end gap-2.5 w-full max-w-[1224px]">
+          <div className="inline-flex items-center justify-end gap-2.5 w-full container">
             <div className="flex w-full items-center gap-2.5">
               <div className="flex items-center gap-1 flex-1" />
 
@@ -75,7 +75,7 @@ export const Navbar = (): JSX.Element => {
         </div>
 
         <div className="flex flex-col w-full h-20 items-center justify-center gap-2.5 bg-white shadow-shadow-blur-2px">
-          <div className="flex w-full max-w-[1224px] items-center justify-between px-4">
+          <div className="flex w-full container items-center justify-between px-4">
             <div className="inline-flex items-center gap-2">
               <div className="inline-flex items-center gap-3">
                 <div className="w-14 h-14 bg-[#005aab] rounded-[28px]" />

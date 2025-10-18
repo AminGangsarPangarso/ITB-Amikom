@@ -29,7 +29,7 @@ export const QuickLinksSubsection = (): JSX.Element => {
   return (
     <section className="relative overflow-hidden bg-white py-[60px] overflow-x-hidden">
       <div className="flex flex-col items-center gap-12 px-4">
-        <div className="w-full max-w-[1200px]">
+        <div className="w-full container mx-auto">
         <h2 className="font-h5-bold font-[number:var(--h5-bold-font-weight)] text-[#3d3d3d] text-[length:var(--h5-bold-font-size)] text-center tracking-[var(--h5-bold-letter-spacing)] leading-[var(--h5-bold-line-height)] [font-style:var(--h5-bold-font-style)]">
           Quick Links Kampus XYZ
         </h2>
@@ -50,12 +50,11 @@ export const QuickLinksSubsection = (): JSX.Element => {
               </div>
 
               <div className="mt-4">
-                <Button
-                  variant="link"
-                  className="inline-flex items-center gap-0.5 p-0 h-auto [font-family:'Inter',Helvetica] font-medium text-[#069dd8] text-base"
-                >
-                  {item.link}
-                  <ArrowUpRightIcon className="w-4 h-4" />
+                <Button asChild variant="link" className="inline-flex items-center gap-0.5 p-0 h-auto [font-family:'Inter',Helvetica] font-medium text-brand text-base">
+                  <a href={item.title.includes('SIX') ? '/external/six' : item.title.includes('Admission') ? '/programs' : '#'}>
+                    {item.link}
+                    <ArrowUpRightIcon className="w-4 h-4" />
+                  </a>
                 </Button>
               </div>
             </div>

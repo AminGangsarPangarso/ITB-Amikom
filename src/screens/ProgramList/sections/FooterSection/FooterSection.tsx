@@ -63,19 +63,15 @@ export const FooterSection = (): JSX.Element => {
 
           <div className="inline-flex flex-col items-start gap-4">
             {footerLinks.temukan.map((link, index) => (
-              <div
-                key={index}
-                className="inline-flex items-start gap-1.5 cursor-pointer"
-              >
-                <div className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#333333] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
+              <div key={index} className="inline-flex items-start gap-1.5">
+                <a
+                  href={link.text === 'Tentang Kami' ? '/about-us' : '#'}
+                  className="font-body-text-14px-regular text-[#333333] text-[length:var(--body-text-14px-regular-font-size)]"
+                >
                   {link.text}
-                </div>
+                </a>
                 {link.hasArrow && (
-                  <img
-                    className="w-4 h-4"
-                    alt="Ph arrow up light"
-                    src="/ph-arrow-up-light.svg"
-                  />
+                  <img className="w-4 h-4" alt="Ph arrow up light" src="/ph-arrow-up-light.svg" />
                 )}
               </div>
             ))}
@@ -89,20 +85,14 @@ export const FooterSection = (): JSX.Element => {
 
           <div className="inline-flex flex-col items-start gap-4">
             {footerLinks.bantuan.map((link, index) => (
-              <div
-                key={index}
-                className="inline-flex items-start gap-1.5 cursor-pointer"
-              >
-                <div className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#333333] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
+              <div key={index} className="inline-flex items-start gap-1.5">
+                <a
+                  href={link.text === 'FAQ' ? '/faq' : '#'}
+                  className="font-body-text-14px-regular text-[#333333] text-[length:var(--body-text-14px-regular-font-size)]"
+                >
                   {link.text}
-                </div>
-                {link.hasArrow && (
-                  <img
-                    className="w-4 h-4"
-                    alt="Ph arrow up light"
-                    src="/ph-arrow-up-light.svg"
-                  />
-                )}
+                </a>
+                {link.hasArrow && <img className="w-4 h-4" alt="Ph arrow up light" src="/ph-arrow-up-light.svg" />}
               </div>
             ))}
           </div>

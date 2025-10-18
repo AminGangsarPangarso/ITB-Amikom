@@ -42,7 +42,7 @@ const newsItems = [
 export const KmSubsection = (): JSX.Element => {
   return (
     <section className="w-full bg-white py-[60px]">
-      <div className="max-w-[1224px] mx-auto px-4 flex flex-col gap-12">
+      <div className="container mx-auto px-4 flex flex-col gap-12">
         <h2 className="font-h5-bold font-[number:var(--h5-bold-font-weight)] text-[#333333] text-[length:var(--h5-bold-font-size)] tracking-[var(--h5-bold-letter-spacing)] leading-[var(--h5-bold-line-height)] [font-style:var(--h5-bold-font-style)]">
           Kegiatan Kemahasiswaan
         </h2>
@@ -111,12 +111,7 @@ export const KmSubsection = (): JSX.Element => {
                 </div>
               </div>
 
-              <a
-                href="#"
-                className="[font-family:'Inter',Helvetica] font-medium text-[#069dd8] text-base text-center tracking-[0] leading-[22px] underline"
-              >
-                Lihat Semua Program Pengabdian Masyarakat
-              </a>
+              <a href="/programs" className="[font-family:'Inter',Helvetica] font-medium text-brand text-base text-center tracking-[0] leading-[22px] underline">Lihat Semua Program Pengabdian Masyarakat</a>
             </div>
           </div>
 

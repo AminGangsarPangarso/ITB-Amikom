@@ -118,7 +118,7 @@ const DecorativeBackground = () => (
 export const InternalSubsection = (): JSX.Element => {
   return (
     <section className="w-full bg-white py-[60px]">
-      <div className="flex flex-col items-center gap-12 max-w-[1223px] mx-auto px-4">
+      <div className="flex flex-col items-center gap-12 container mx-auto px-4">
         <h2 className="font-h5-bold font-[number:var(--h5-bold-font-weight)] text-[#333333] text-[length:var(--h5-bold-font-size)] tracking-[var(--h5-bold-letter-spacing)] leading-[var(--h5-bold-line-height)] [font-style:var(--h5-bold-font-style)] text-center">
           Tentukan Jenjang Pendidikan yang Kamu Inginkan
         </h2>
@@ -180,12 +180,7 @@ export const InternalSubsection = (): JSX.Element => {
                           <p className="font-body-text-16px-regular font-[number:var(--body-text-16px-regular-font-weight)] text-[length:var(--body-text-16px-regular-font-size)] tracking-[var(--body-text-16px-regular-letter-spacing)] leading-[var(--body-text-16px-regular-line-height)] [font-style:var(--body-text-16px-regular-font-style)]">
                             {program.items.map((item, itemIndex) => (
                               <React.Fragment key={itemIndex}>
-                                <a
-                                  href="#"
-                                  className="text-[#0067ab] hover:underline"
-                                >
-                                  {item}
-                                </a>
+                                <a href={`/programs/${item.toLowerCase().replace(/\s+/g,'-')}`} className="text-brand hover:underline">{item}</a>
                                 {itemIndex < program.items.length - 1 && (
                                   <span className="text-[#333333]">, </span>
                                 )}
@@ -198,12 +193,7 @@ export const InternalSubsection = (): JSX.Element => {
                         )}
                       </div>
                     ))}
-                    <a
-                      href="#"
-                      className="[font-family:'Inter',Helvetica] font-medium text-[#069dd8] text-base text-center tracking-[0] leading-[22px] underline hover:text-[#0067ab] transition-colors"
-                    >
-                      Lihat Program Studi Lainnya
-                    </a>
+                    <a href="/programs" className="[font-family:'Inter',Helvetica] font-medium text-brand text-base text-center tracking-[0] leading-[22px] underline hover:text-brand/90 transition-colors">Lihat Program Studi Lainnya</a>
                   </div>
                 </div>
               </CardContent>

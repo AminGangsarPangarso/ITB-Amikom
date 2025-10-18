@@ -33,9 +33,9 @@ export const Contact = (): JSX.Element => {
           <div className="lg:col-span-2 relative bg-red">
             <div className="rounded-2xl h-fit overflow-hidden">
               <div className="">
-                <img src="/contact.png" alt="Gedung Direktorat Pendidikan ITB" className="w-full object-cover" />
+                <img src="/contact.png" alt="Gedung Direktorat Pendidikan kampus xyz" className="w-full object-cover" />
                 <div className="absolute left-6 bottom-6  p-4 ">
-                  <h3 className="font-semibold text-lg">Direktorat Pendidikan ITB</h3>
+                  <h3 className="font-semibold text-lg">Direktorat Pendidikan kampus xyz</h3>
                   <a className="text-sm text-[#069dd8] underline" href="#">Jalan Tamansari Nomor 64 Bandung 40116</a>
                 </div>
               </div>
@@ -65,7 +65,7 @@ export const Contact = (): JSX.Element => {
                     </div>
                     <div>
                       <div className="font-semibold">Instagram</div>
-                      <a href="https://instagram.com/akademikitb" className="text-sm text-[#069dd8]">@akademikitb</a>
+                      <a href="https://instagram.com/akademik_kampusxyz" className="text-sm text-[#069dd8]">@akademik_kampusxyz</a>
                     </div>
                   </div>
 
@@ -87,7 +87,7 @@ export const Contact = (): JSX.Element => {
                     </div>
                     <div>
                       <div className="font-semibold">Pusat Bantuan SIX</div>
-                      <a className="text-sm text-[#069dd8]" href="https://helpdesk.six.itb.ac.id">helpdesk.six.itb.ac.id</a>
+                      <a className="text-sm text-[#069dd8]" href="https://helpdesk.six.kampusxyz.ac.id">helpdesk.six.kampusxyz.ac.id</a>
                     </div>
                   </div>
 

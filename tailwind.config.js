@@ -43,6 +43,8 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+  brand: 'var(--brand-hex)',
+  'brand-dark': 'var(--blue-Kampus-XYZ)',
       },
       fontFamily: {
         "body-regular-16": "var(--body-regular-16-font-family)",

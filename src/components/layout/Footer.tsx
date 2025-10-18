@@ -1,21 +1,22 @@
 import { GlobeIcon, MapPinIcon } from "lucide-react";
+import { Link } from 'react-router-dom';
 
 const findLinks = [
-  { text: "Tentang Kami", hasExternalIcon: false },
-  { text: "Kunjungi Kampus XYZ", hasExternalIcon: true },
-  { text: "Kebijakan Privasi", hasExternalIcon: false },
-  { text: "Syarat dan Ketentuan", hasExternalIcon: false },
+  { text: "Tentang Kami", url: "/about-us", external: false },
+  { text: "Kunjungi Kampus XYZ", url: "https://kampusxyz.ac.id", external: true },
+  { text: "Kebijakan Privasi", url: "/kebijakan-privasi", external: false },
+  { text: "Syarat dan Ketentuan", url: "/terms", external: false },
 ];
 
 const supportLinks = [
-  { text: "FAQ", hasExternalIcon: false },
-  { text: "Pusat Bantuan SIX", hasExternalIcon: true },
+  { text: "FAQ", url: "/faq", external: false },
+  { text: "Pusat Bantuan SIX", url: "https://helpdesk.six.kampusxyz.ac.id", external: true },
 ];
 
 export const Footer = (): JSX.Element => {
   return (
     <footer className="w-full bg-white">
-      <div className="max-w-[1224px] mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="flex flex-col gap-4">
             <div className="inline-flex items-center gap-2">
@@ -56,31 +57,22 @@ export const Footer = (): JSX.Element => {
 
             <nav className="flex flex-col gap-4">
               {findLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href="#"
-                  className="inline-flex items-start gap-1.5 hover:underline"
-                >
-                  <span className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#333333] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
-                    {link.text}
-                  </span>
-                  {link.hasExternalIcon && (
-                    <svg
-                      className="w-4 h-4 flex-shrink-0"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M4 12L12 4M12 4H6M12 4V10"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
+                link.external ? (
+                  <a key={index} href={link.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-start gap-1.5 hover:underline">
+                    <span className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#333333] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
+                      {link.text}
+                    </span>
+                    <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                  )}
-                </a>
+                  </a>
+                ) : (
+                  <Link key={index} to={link.url} className="inline-flex items-start gap-1.5 hover:underline">
+                    <span className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#333333] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
+                      {link.text}
+                    </span>
+                  </Link>
+                )
               ))}
             </nav>
           </div>
@@ -92,31 +84,22 @@ export const Footer = (): JSX.Element => {
 
             <nav className="flex flex-col gap-4">
               {supportLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href="#"
-                  className="inline-flex items-start gap-1.5 hover:underline"
-                >
-                  <span className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#333333] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
-                    {link.text}
-                  </span>
-                  {link.hasExternalIcon && (
-                    <svg
-                      className="w-4 h-4 flex-shrink-0"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M4 12L12 4M12 4H6M12 4V10"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
+                link.external ? (
+                  <a key={index} href={link.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-start gap-1.5 hover:underline">
+                    <span className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#333333] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
+                      {link.text}
+                    </span>
+                    <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                  )}
-                </a>
+                  </a>
+                ) : (
+                  <Link key={index} to={link.url} className="inline-flex items-start gap-1.5 hover:underline">
+                    <span className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#333333] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
+                      {link.text}
+                    </span>
+                  </Link>
+                )
               ))}
             </nav>
           </div>

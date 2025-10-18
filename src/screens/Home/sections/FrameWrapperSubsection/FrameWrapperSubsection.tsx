@@ -3,8 +3,8 @@ import { Button } from "../../../../components/ui/button";
 
 export const FrameWrapperSubsection = (): JSX.Element => {
   return (
-    <section className="flex flex-col items-center gap-2.5 px-[99px] py-[60px] w-full">
-      <div className="relative w-full max-w-[1162px]">
+    <section className="flex flex-col items-center gap-2.5 py-[60px] w-full">
+      <div className="relative w-full container mx-auto px-4">
         <div className="relative w-full h-[238px]">
           <div className="absolute top-0 left-0 w-full h-full flex">
             <div className="relative w-full h-full">
@@ -56,10 +56,8 @@ export const FrameWrapperSubsection = (): JSX.Element => {
               Raih Impian demi Kesuksesan Masa Depanmu
             </h2>
 
-            <Button className="h-12 justify-center gap-2.5 px-4 bg-white rounded-[100px] overflow-hidden hover:bg-white/90">
-              <span className="[font-family:'Inter',Helvetica] font-medium text-[#069dd8] text-base text-center tracking-[0] leading-[22px] whitespace-nowrap">
-                Daftar Sekarang
-              </span>
+            <Button asChild className="h-12 justify-center gap-2.5 px-4 bg-white rounded-[100px] overflow-hidden hover:bg-white/90">
+              <a href="/programs" className="[font-family:'Inter',Helvetica] font-medium text-[#069dd8] text-base text-center tracking-[0] leading-[22px] whitespace-nowrap">Daftar Sekarang</a>
             </Button>
           </div>
         </div>

@@ -46,7 +46,7 @@ const academicServicesData = [
 export const AltSubsection = (): JSX.Element => {
   return (
     <section className="w-full bg-white py-[60px]">
-      <div className="max-w-[1222px] mx-auto px-4 flex flex-col lg:flex-row gap-6">
+  <div className="container mx-auto px-4 flex flex-col lg:flex-row gap-6">
         <div className="flex flex-col gap-12 flex-1">
           <h2 className="font-h5-bold font-[number:var(--h5-bold-font-weight)] text-[#3d3d3d] text-[length:var(--h5-bold-font-size)] tracking-[var(--h5-bold-letter-spacing)] leading-[var(--h5-bold-line-height)] [font-style:var(--h5-bold-font-style)]">
             Jadwal Akademik 2023/2024

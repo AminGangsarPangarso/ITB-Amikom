@@ -14,8 +14,8 @@ export const NavbarMenuPublikSubsection = (): JSX.Element => {
   return (
     <nav className="w-full inline-flex flex-col items-start">
       <div className="w-full flex flex-col items-start">
-        <div className="flex flex-col w-full items-end justify-center gap-2.5 px-[71px] py-2.5 bg-[#0660a6] border-b-[0.6px] [border-bottom-style:solid] border-[#cccccc]">
-          <div className="inline-flex items-center justify-end gap-2.5 w-full max-w-[1224px]">
+          <div className="flex flex-col w-full items-end justify-center gap-2.5 px-4 py-2.5 bg-[#0660a6] border-b-[0.6px] [border-bottom-style:solid] border-[#cccccc]">
+            <div className="inline-flex items-center justify-end gap-2.5 w-full container mx-auto">
             <div className="flex w-full items-center gap-2.5">
               <div className="flex items-center gap-1 flex-1" />
 
@@ -42,7 +42,7 @@ export const NavbarMenuPublikSubsection = (): JSX.Element => {
         </div>
 
         <div className="flex flex-col w-full h-20 items-center justify-center gap-2.5 bg-white shadow-shadow-blur-2px">
-          <div className="flex w-full max-w-[1224px] items-center justify-between px-4">
+          <div className="flex w-full container mx-auto items-center justify-between px-4">
             <div className="inline-flex items-center gap-2">
               <div className="inline-flex items-center gap-3">
                 <div className="w-14 h-14 bg-[#005aab] rounded-[28px]" />
@@ -74,11 +74,9 @@ export const NavbarMenuPublikSubsection = (): JSX.Element => {
               <div className="inline-flex items-center justify-end gap-3">
                 <div className="inline-flex items-center justify-end gap-4">
                   <Button
-                    variant="outline"
-                    className="w-28 h-12 rounded-3xl border-[#069dd8] text-[#069dd8] font-body-text-16px-medium font-[number:var(--body-text-16px-medium-font-weight)] text-[length:var(--body-text-16px-medium-font-size)] tracking-[var(--body-text-16px-medium-letter-spacing)] leading-[var(--body-text-16px-medium-line-height)] [font-style:var(--body-text-16px-medium-font-style)] hover:bg-[#069dd8] hover:text-white"
-                  >
-                    Login
-                  </Button>
+                      asChild variant="outline" className="w-28 h-12 rounded-3xl border-[#069dd8] text-[#069dd8] font-body-text-16px-medium font-[number:var(--body-text-16px-medium-font-weight)] text-[length:var(--body-text-16px-medium-font-size)] tracking-[var(--body-text-16px-medium-letter-spacing)] leading-[var(--body-text-16px-medium-line-height)] [font-style:var(--body-text-16px-medium-font-style)] hover:bg-[#069dd8] hover:text-white">
+                      <a href="/profile">Login</a>
+                    </Button>
                 </div>
               </div>
             </div>

@@ -16,7 +16,7 @@ const supportLinks = [
 export const FooterSubsection = (): JSX.Element => {
   return (
     <footer className="w-full bg-white">
-      <div className="max-w-[1224px] mx-auto px-4 py-12">
+  <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="flex flex-col gap-4">
             <div className="inline-flex items-center gap-2">
@@ -51,34 +51,19 @@ export const FooterSubsection = (): JSX.Element => {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h3 className="font-h11-bold font-[number:var(--h11-bold-font-weight)] text-[#0660a6] text-[length:var(--h11-bold-font-size)] tracking-[var(--h11-bold-letter-spacing)] leading-[var(--h11-bold-line-height)] [font-style:var(--h11-bold-font-style)]">
+            <h3 className="font-h11-bold font-[number:var(--h11-bold-font-weight)] text-brand text-[length:var(--h11-bold-font-size)] tracking-[var(--h11-bold-letter-spacing)] leading-[var(--h11-bold-line-height)] [font-style:var(--h11-bold-font-style)]">
               Temukan
             </h3>
 
             <nav className="flex flex-col gap-4">
               {findLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href="#"
-                  className="inline-flex items-start gap-1.5 hover:underline"
-                >
+                <a key={index} href={link.text === 'Tentang Kami' ? '/about-us' : link.text === 'Kunjungi Kampus XYZ' ? 'https://kampusxyz.ac.id' : link.text === 'Kebijakan Privasi' ? '/kebijakan-privasi' : '/terms'} className="inline-flex items-start gap-1.5 hover:underline">
                   <span className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#333333] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
                     {link.text}
                   </span>
                   {link.hasExternalIcon && (
-                    <svg
-                      className="w-4 h-4 flex-shrink-0"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M4 12L12 4M12 4H6M12 4V10"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
+                    <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   )}
                 </a>
@@ -87,34 +72,19 @@ export const FooterSubsection = (): JSX.Element => {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h3 className="font-h11-bold font-[number:var(--h11-bold-font-weight)] text-[#0660a6] text-[length:var(--h11-bold-font-size)] tracking-[var(--h11-bold-letter-spacing)] leading-[var(--h11-bold-line-height)] [font-style:var(--h11-bold-font-style)]">
+            <h3 className="font-h11-bold font-[number:var(--h11-bold-font-weight)] text-brand text-[length:var(--h11-bold-font-size)] tracking-[var(--h11-bold-letter-spacing)] leading-[var(--h11-bold-line-height)] [font-style:var(--h11-bold-font-style)]">
               Bantuan &amp; Dukungan
             </h3>
 
             <nav className="flex flex-col gap-4">
               {supportLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href="#"
-                  className="inline-flex items-start gap-1.5 hover:underline"
-                >
+                <a key={index} href={link.text === 'FAQ' ? '/faq' : 'https://helpdesk.six.kampusxyz.ac.id'} className="inline-flex items-start gap-1.5 hover:underline">
                   <span className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#333333] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
                     {link.text}
                   </span>
                   {link.hasExternalIcon && (
-                    <svg
-                      className="w-4 h-4 flex-shrink-0"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M4 12L12 4M12 4H6M12 4V10"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
+                    <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   )}
                 </a>
@@ -142,7 +112,7 @@ export const FooterSubsection = (): JSX.Element => {
       </div>
 
       <div className="w-full border-t border-gray-200">
-        <div className="max-w-[1224px] mx-auto px-4 py-4">
+        <div className="container mx-auto px-4 py-4">
           <p className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#9e9e9e] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
             ©2024 Direktorat Pendidikan Akademik dan Kemahasiswaan Kampus
           </p>

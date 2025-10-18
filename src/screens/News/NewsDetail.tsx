@@ -5,7 +5,6 @@ import { Link, useParams } from 'react-router-dom';
 import { MainLayout } from '../../components/layout';
 import { Badge } from '../../components/ui/badge';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '../../components/ui/breadcrumb';
-import { Card } from '../../components/ui/card';
 
 type Article = {
     title: string;
@@ -22,7 +21,7 @@ type Article = {
 
 const articles: Record<string, Article> = {
     'news-1': {
-        title: 'Wisuda Kedua ITB Tahun Akademik 2023/2024',
+    title: 'Wisuda Kedua kampus xyz Tahun Akademik 2023/2024',
         category: 'Wisuda',
         date: '19 Juni 2024',
         image: 'https://picsum.photos/id/1043/1200/800',
@@ -30,7 +29,7 @@ const articles: Record<string, Article> = {
         sections: [
             {
                 number: 1,
-                text: 'Proses Wisuda Kedua ITB Tahun Akademik 2023/2024 akan dilaksanakan pada hari Sabtu, tanggal 27 April 2024 mulai pukul 08.00-10.30 WIB, di Sasana Budaya Ganesha (Sabuga) ITB.',
+                text: 'Proses Wisuda Kedua kampus xyz Tahun Akademik 2023/2024 akan dilaksanakan pada hari Sabtu, tanggal 27 April 2024 mulai pukul 08.00-10.30 WIB, di Sasana Budaya Ganesha (Sabuga) kampus xyz.',
                 bullets: [
                     'Hanya lulusan pada Yudisium Bulan November 2023 s.d. Maret 2024 yang telah menyelesaikan administrasi kelulusan sesuai ketentuan, berhak mengikuti prosesi wisuda.',
                     'Untuk melihat waktu dan nama per-fakultas, silahkan perhatikan pada acara prosesi wisuda mulai tanggal 27 Maret 2024 sampai dengan tanggal 18 April 2024 pukul 10.00 WIB melalui laman Sistem Informasi Akademik (SIA-NG).',
@@ -40,15 +39,15 @@ const articles: Record<string, Article> = {
             },
             {
                 number: 2,
-                text: 'Sesuai dengan peraturan Rektor ITB nomor 13/IT1.A/PER/2024 tentang Perubahan Pertama Atas Peraturan Rektor ITB nomor 07/IT1.A/PER/2023 tentang Wisuda Institut Teknologi Bandung bahwa Wisudawan tidak dipungut biaya prosesi wisuda, dan hanya menanggung biaya penyediaan toga dan dokumentasi.'
+                text: 'Sesuai dengan peraturan Rektor kampus xyz nomor 13/IT1.A/PER/2024 tentang Perubahan Pertama Atas Peraturan Rektor nomor 07/IT1.A/PER/2023 tentang Wisuda bahwa Wisudawan tidak dipungut biaya prosesi wisuda, dan hanya menanggung biaya penyediaan toga dan dokumentasi.'
             },
             {
                 number: 3,
-                text: 'Toga, topi dan kalung Wisuda ITB dapat dipesan mulai tanggal 2 April 2024 melalui ITB Press dengan mengakses tautan berikut https://www.itbpress.id/togaitb/.'
+                text: 'Toga, topi dan kalung Wisuda kampus xyz dapat dipesan mulai tanggal 2 April 2024 melalui kampusxyz Press dengan mengakses tautan berikut https://www.kampusxyz.press/togaitb/.'
             },
             {
                 number: 4,
-                text: 'Bagi lulusan yang memerlukan Buku Lulusan dalam bentuk hardcopy, dapat memesan melalui ITB Press di www.itbpress.id/weusantb/ mulai tanggal 18 April 2024.'
+                text: 'Bagi lulusan yang memerlukan Buku Lulusan dalam bentuk hardcopy, dapat memesan melalui kampusxyz Press mulai tanggal 18 April 2024.'
             },
             {
                 number: 5,
@@ -59,9 +58,9 @@ const articles: Record<string, Article> = {
                 text: 'Acara Prosesi Wisuda dilaksanakan dengan ketentuan sebagai berikut:',
                 bullets: [
                     'Hanya lulusan pada Yudisium Bulan November 2023 s.d. Maret 2024 yang telah menyelesaikan administrasi kelulusan sesuai ketentuan, berhak mengikuti prosesi wisuda.',
-                    'Wisudawan wajib menggunakan toga dan kalung Wisuda ITB sesuai aturan.',
+                    'Wisudawan wajib menggunakan toga dan kalung Wisuda kampus xyz sesuai aturan.',
                     'Wisudawan disarankan tidak membawa kendaraan roda dua dalam perjalanan untuk kendaraan roda empat/bus wisuda terutama untuk berkegiatan lokasi wisuda hanya untuk kendaraan roda dua dan parkirnya disiapkan untuk lokasi wisuda Sabuga untuk ketertiban pergerakan lalu lintas.',
-                    'ITB menyediakan tempat parkir dalam jumlah yang sangat terbatas, yang dapat digunakan oleh wisudawan untuk menitipkan parkir.',
+                    'kampus xyz menyediakan tempat parkir dalam jumlah yang sangat terbatas, yang dapat digunakan oleh wisudawan untuk menitipkan parkir.',
                     'Masing-masing wisudawan wajib membawa botol minum (tumbler) dan memastikan sudah makan sebelum melaksanakan acara.'
                 ]
             },
@@ -78,8 +77,8 @@ const articles: Record<string, Article> = {
 };
 
 const relatedNews = [
-    { id: '1', slug: 'beasiswa-lpdp', title: 'Beasiswa LPDP ITB Batch 2 Khusus Pendaftar Daerah Af...', category: 'Beasiswa', date: '19 Juni 2024', image: 'https://picsum.photos/id/1018/1200/800' },
-    { id: '2', slug: 'wisuda-kedua', title: 'Wisuda Kedua ITB Tahun Akademik 2023/2024', category: 'Wisuda', date: '20 Mei 2024', image: 'https://picsum.photos/id/1025/1200/800' },
+    { id: '1', slug: 'beasiswa-lpdp', title: 'Beasiswa LPDP kampus xyz Batch 2 Khusus Pendaftar Daerah Af...', category: 'Beasiswa', date: '19 Juni 2024', image: 'https://picsum.photos/id/1018/1200/800' },
+    { id: '2', slug: 'wisuda-kedua', title: 'Wisuda Kedua kampus xyz Tahun Akademik 2023/2024', category: 'Wisuda', date: '20 Mei 2024', image: 'https://picsum.photos/id/1025/1200/800' },
     { id: '3', slug: 'sosialisasi-snbp', title: 'Sosialisasi SNBP, SNBT, dan Penerimaan Mahasiswa Bar...', category: 'Sosialisasi', date: '6 Mei 2024', image: 'https://picsum.photos/id/1035/1200/800' },
     { id: '4', slug: 'penerbitan-ijazah', title: 'Penerbitan Ijazah April 2024 untuk Lulusan Yudisium Feb...', category: 'Sosialisasi', date: '27 April 2024', image: 'https://picsum.photos/id/1043/1200/800' }
 ];

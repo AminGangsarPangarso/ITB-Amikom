@@ -25,7 +25,7 @@ const sampleImages = [
 const sampleNews: NewsItem[] = Array.from({ length: 12 }).map((_, i) => ({
     id: `news-${i + 1}`,
     slug: `news-${i + 1}`,
-    title: i % 3 === 0 ? "Wisuda Kedua ITB Tahun Akademik 2023/2024" : i % 3 === 1 ? "Sosialisasi SNBP, SNBT, dan Penerimaan Mahasiswa Baru" : "Beasiswa LPDP ITB Batch 2 Khusus Pendaftar Daerah",
+    title: i % 3 === 0 ? "Wisuda Kedua kampus xyz Tahun Akademik 2023/2024" : i % 3 === 1 ? "Sosialisasi SNBP, SNBT, dan Penerimaan Mahasiswa Baru" : "Beasiswa LPDP kampus xyz Batch 2 Khusus Pendaftar Daerah",
     category: i % 3 === 0 ? "Wisuda" : i % 3 === 1 ? "Sosialisasi" : "Beasiswa",
     date: ["20 Mei 2024", "6 Mei 2024", "19 Juni 2024"][i % 3],
     image: sampleImages[i % sampleImages.length],

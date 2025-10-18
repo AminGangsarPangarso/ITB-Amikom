@@ -40,7 +40,7 @@ const newsData = [
 export const FrameSubsection = (): JSX.Element => {
   return (
     <section className="flex flex-col items-center gap-10 w-full py-10">
-      <div className="flex flex-col items-center gap-10 w-full max-w-[1224px]">
+      <div className="flex flex-col items-center gap-10 w-full container mx-auto px-4">
         <div className="grid grid-cols-4 gap-6 w-full">
           {newsData.map((item, index) => (
             <div key={index} className="relative w-full h-[277px]">
@@ -80,13 +80,8 @@ export const FrameSubsection = (): JSX.Element => {
           ))}
         </div>
 
-        <Button
-          variant="outline"
-          className="h-12 px-4 py-4 rounded-[100px] border-[#069dd8] text-[#069dd8] hover:bg-[#069dd8]/10 hover:text-[#069dd8]"
-        >
-          <span className="[font-family:'Inter',Helvetica] font-medium text-base text-center tracking-[0] leading-[22px] whitespace-nowrap">
-            Semua Berita dan Acara
-          </span>
+        <Button asChild variant="outline" className="h-12 px-4 py-4 rounded-[100px] border-[#069dd8] text-[#069dd8] hover:bg-[#069dd8]/10 hover:text-[#069dd8]">
+          <a href="/news" className="[font-family:'Inter',Helvetica] font-medium text-base text-center tracking-[0] leading-[22px] whitespace-nowrap">Semua Berita dan Acara</a>
         </Button>
       </div>
     </section>

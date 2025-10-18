@@ -11,7 +11,7 @@ export const HeroUtamaSubsection = (): JSX.Element => {
 
 
       {/* Main content: responsive flex with left text, center image, right controls */}
-      <div className="relative max-w-[1200px] mx-auto px-4 py-12 md:py-20">
+      <div className="relative container mx-auto px-4 py-12 md:py-20">
         <div className="flex flex-col-reverse md:flex-row items-center md:items-start gap-8">
           {/* Left: Heading & CTA (narrower to give space to hero) */}
           <div className="w-full md:w-full flex flex-col items-start gap-5 z-10">
@@ -19,10 +19,8 @@ export const HeroUtamaSubsection = (): JSX.Element => {
               Menggali Potensi Diri Mencapai Mimpi dan Meraih Prestasi
             </h1>
 
-            <Button className="h-12 justify-center gap-2.5 px-4 bg-[#069dd8] rounded-[100px] hover:bg-[#069dd8]/90">
-              <span className="[font-family:'Inter',Helvetica] font-medium text-white text-base text-center tracking-[0] leading-[22px] whitespace-nowrap">
-                Jelajahi Program Studi
-              </span>
+            <Button asChild className="h-12 justify-center gap-2.5 px-4 bg-[#069dd8] rounded-[100px] hover:bg-[#069dd8]/90">
+              <a href="/programs" className="[font-family:'Inter',Helvetica] font-medium text-white text-base text-center tracking-[0] leading-[22px] whitespace-nowrap">Jelajahi Program Studi</a>
             </Button>
           </div>
 

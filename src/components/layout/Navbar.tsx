@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from "lucide-react";
+import { ChevronDownIcon, LogOut, User } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -42,6 +42,20 @@ const programDropdownData = {
 
 export const Navbar = (): JSX.Element => {
   const [isProgramDropdownOpen, setIsProgramDropdownOpen] = useState(false);
+  const [isAkademikOpen, setIsAkademikOpen] = useState(false);
+  const [isKemahasiswaanOpen, setIsKemahasiswaanOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isQuickLinksOpen, setIsQuickLinksOpen] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
+
+  const closeAll = () => {
+    setIsProgramDropdownOpen(false);
+    setIsAkademikOpen(false);
+    setIsKemahasiswaanOpen(false);
+    setIsProfileOpen(false);
+    setIsQuickLinksOpen(false);
+    setIsLangOpen(false);
+  };
 
   return (
     <nav className="w-full inline-flex flex-col items-start relative">
@@ -62,12 +76,73 @@ export const Navbar = (): JSX.Element => {
                   </a>
                 ))}
 
-                <div className="inline-flex items-center gap-1 px-2.5 py-1.5 bg-white rounded-[100px] shadow-blur-7px cursor-pointer hover:opacity-90 transition-opacity">
-                  <div className="flex items-center justify-center font-[number:var(--body-text-14px-regular-font-weight)] text-[#333333] text-[length:var(--body-text-14px-regular-font-size)] font-body-text-14px-regular text-center tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
-                    Quick Links
+                <div className="inline-flex items-center gap-3">
+                  {/* Language selector (flag image) - placed left of Quick Links */}
+                  <div className="relative">
+                    <button
+                      className="inline-flex items-center gap-2 px-2 py-1 bg-transparent text-white rounded hover:opacity-90"
+                      onClick={() => {
+                        setIsLangOpen(!isLangOpen);
+                        setIsQuickLinksOpen(false);
+                      }}
+                    >
+                      <img src="/flags/id.svg" alt="ID" className="w-5 h-4 object-cover" />
+                      <ChevronDownIcon className="w-4 h-4 text-white" />
+                    </button>
+
+                    {isLangOpen && (
+                      <div className="absolute right-0 mt-3 z-50">
+                        <div className="bg-white rounded-xl shadow-md p-3 w-36 border border-gray-100">
+                          <nav className="flex flex-col">
+                            <button className="flex items-center gap-2 px-2 py-2 hover:bg-gray-50" onClick={() => { /* switch to EN logic */ closeAll(); }}>
+                              <img src="/flags/gb.svg" alt="EN" className="w-5 h-4 object-cover" />
+                              <span className="text-sm font-medium">EN</span>
+                            </button>
+                          </nav>
+                        </div>
+                      </div>
+                    )}
                   </div>
 
-                  <ChevronDownIcon className="w-5 h-5 text-[#333333]" />
+                  {/* Quick Links pill (top-bar) with icons in floating menu */}
+                  <div
+                    className="inline-flex items-center gap-1 px-2.5 py-1.5 bg-white rounded-[100px] shadow-blur-7px cursor-pointer hover:opacity-90 transition-opacity relative"
+                    onClick={() => {
+                      setIsQuickLinksOpen(!isQuickLinksOpen);
+                      setIsLangOpen(false);
+                    }}
+                  >
+                    <div className="flex items-center justify-center font-[number:var(--body-text-14px-regular-font-weight)] text-[#333333] text-[length:var(--body-text-14px-regular-font-size)] font-body-text-14px-regular text-center tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
+                      Quick Links
+                    </div>
+
+                    <ChevronDownIcon className="w-5 h-5 text-[#333333]" />
+
+                    {isQuickLinksOpen && (
+                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 z-50">
+                        <div className="bg-white rounded-[20px] shadow-[0_16px_64px_rgba(0,0,0,0.15)] p-4 w-[320px] border border-gray-100">
+                          <nav className="flex flex-col gap-2">
+                            <a href="/external/six" className="flex items-center gap-3 px-2 py-2 hover:bg-gray-50 rounded">
+                              <img src="/icons/six.svg" alt="SIX" className="w-6 h-6" />
+                              <span className="text-sm text-gray-800">SIX XYZ</span>
+                            </a>
+                            <a href="/external/edunex" className="flex items-center gap-3 px-2 py-2 hover:bg-gray-50 rounded">
+                              <img src="/icons/edunex.svg" alt="Edunex" className="w-6 h-6" />
+                              <span className="text-sm text-gray-800">Edunex LMS XYZ</span>
+                            </a>
+                            <a href="/admission" className="flex items-center gap-3 px-2 py-2 hover:bg-gray-50 rounded">
+                              <img src="/icons/admission.svg" alt="Admission" className="w-6 h-6" />
+                              <span className="text-sm text-gray-800">Admission XYZ</span>
+                            </a>
+                            <a href="/continuing" className="flex items-center gap-3 px-2 py-2 hover:bg-gray-50 rounded">
+                              <img src="/icons/continuing.svg" alt="Continuing" className="w-6 h-6" />
+                              <span className="text-sm text-gray-800">Continuing &amp; Professional Education</span>
+                            </a>
+                          </nav>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -95,8 +170,26 @@ export const Navbar = (): JSX.Element => {
                     <button
                       className="inline-flex items-center gap-1 hover:opacity-80 transition-opacity"
                       onClick={() => {
+                        // Toggle the clicked menu and close others
                         if (item.label === "Program") {
                           setIsProgramDropdownOpen(!isProgramDropdownOpen);
+                          setIsAkademikOpen(false);
+                          setIsKemahasiswaanOpen(false);
+                          setIsProfileOpen(false);
+                        }
+
+                        if (item.label === "Akademik") {
+                          setIsAkademikOpen(!isAkademikOpen);
+                          setIsProgramDropdownOpen(false);
+                          setIsKemahasiswaanOpen(false);
+                          setIsProfileOpen(false);
+                        }
+
+                        if (item.label === "Kemahasiswaan") {
+                          setIsKemahasiswaanOpen(!isKemahasiswaanOpen);
+                          setIsProgramDropdownOpen(false);
+                          setIsAkademikOpen(false);
+                          setIsProfileOpen(false);
                         }
                       }}
                     >
@@ -178,6 +271,44 @@ export const Navbar = (): JSX.Element => {
                         </div>
                       </div>
                     )}
+
+                    {/* Akademik Dropdown */}
+                    {item.label === "Akademik" && isAkademikOpen && (
+                      <div className="absolute top-full left-0 mt-2 z-50">
+                        <div className="bg-white rounded-xl shadow-md p-3 w-52 border border-gray-100">
+                          <nav className="flex flex-col gap-1">
+                            <Link to="/akademik/kurikulum" onClick={closeAll} className="block px-2 py-1 rounded hover:bg-gray-50">
+                              <span className="text-sm text-gray-700 hover:text-brand transition-colors">Kurikulum</span>
+                            </Link>
+                            <Link to="/akademik/program-studi" onClick={closeAll} className="block px-2 py-1 rounded hover:bg-gray-50">
+                              <span className="text-sm text-gray-700 hover:text-brand transition-colors">Program Studi</span>
+                            </Link>
+                            <Link to="/akademik/accreditation" onClick={closeAll} className="block px-2 py-1 rounded hover:bg-gray-50">
+                              <span className="text-sm text-gray-700 hover:text-brand transition-colors">Akreditasi</span>
+                            </Link>
+                          </nav>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Kemahasiswaan Dropdown */}
+                    {item.label === "Kemahasiswaan" && isKemahasiswaanOpen && (
+                      <div className="absolute top-full left-0 mt-2 z-50">
+                        <div className="bg-white rounded-xl shadow-md p-3 w-56 border border-gray-100">
+                          <nav className="flex flex-col gap-1">
+                            <Link to="/kemahasiswaan/beasiswa" onClick={closeAll} className="block px-2 py-1 rounded hover:bg-gray-50">
+                              <span className="text-sm text-gray-700 hover:text-brand transition-colors">Beasiswa & Bantuan</span>
+                            </Link>
+                            <Link to="/kemahasiswaan/organisasi" onClick={closeAll} className="block px-2 py-1 rounded hover:bg-gray-50">
+                              <span className="text-sm text-gray-700 hover:text-brand transition-colors">Organisasi Mahasiswa</span>
+                            </Link>
+                            <Link to="/kemahasiswaan/kegiatan" onClick={closeAll} className="block px-2 py-1 rounded hover:bg-gray-50">
+                              <span className="text-sm text-gray-700 hover:text-brand transition-colors">Kegiatan & Event</span>
+                            </Link>
+                          </nav>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
@@ -185,25 +316,49 @@ export const Navbar = (): JSX.Element => {
               <div className="inline-flex items-center justify-end gap-3">
                 <div className="inline-flex items-center justify-end gap-4">
                   {/* Profile Section */}
-                  <Link to="/profile" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-                    <img 
-                      src="/frame-427322943-1.png" 
-                      alt="Profile" 
-                      className="w-10 h-10 rounded-full object-cover"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        const fallback = document.createElement('div');
-                        fallback.className = 'w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center';
-                        fallback.innerHTML = '<span class="text-gray-600 font-semibold text-sm">IM</span>';
-                        target.parentElement?.appendChild(fallback);
-                      }}
-                    />
-                    <div className="flex flex-col items-start">
-                      <div className="font-semibold text-[#333333] text-sm">Ismail Mail</div>
-                      <div className="text-xs text-[#808080]">FTSL/Teknik Kelautan</div>
-                    </div>
-                  </Link>
+                  <div className="relative">
+                    <button className="flex items-center gap-3 hover:opacity-80 transition-opacity" onClick={() => {
+                      setIsProfileOpen(!isProfileOpen);
+                      setIsProgramDropdownOpen(false);
+                      setIsAkademikOpen(false);
+                      setIsKemahasiswaanOpen(false);
+                    }}>
+                      <img 
+                        src="/frame-427322943-1.png" 
+                        alt="Profile" 
+                        className="w-10 h-10 rounded-full object-cover"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          const fallback = document.createElement('div');
+                          fallback.className = 'w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center';
+                          fallback.innerHTML = '<span class="text-gray-600 font-semibold text-sm">IM</span>';
+                          target.parentElement?.appendChild(fallback);
+                        }}
+                      />
+
+                      <div className="flex flex-col items-start">
+                        <div className="font-semibold text-[#333333] text-sm">Ismail Mail</div>
+                        <div className="text-xs text-[#808080]">FTSL/Teknik Kelautan</div>
+                      </div>
+                    </button>
+
+                    {isProfileOpen && (
+                      <div className="absolute right-0 mt-3 z-50">
+                        <div className="bg-white rounded-xl shadow-md p-3 w-44 border border-gray-100">
+                          <Link to="/profile" onClick={closeAll} className="flex items-center gap-2 px-2 py-2 rounded hover:bg-gray-50">
+                            <User className="w-4 h-4 text-gray-600" />
+                            <span className="text-sm text-gray-700 hover:text-brand transition-colors">Profil Saya</span>
+                          </Link>
+
+                          <button onClick={() => { /* TODO: logout handler */ closeAll(); }} className="w-full text-left flex items-center gap-2 px-2 py-2 mt-1 rounded hover:bg-red-50">
+                            <LogOut className="w-4 h-4 text-red-600" />
+                            <span className="text-sm text-red-600">Keluar</span>
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -212,10 +367,10 @@ export const Navbar = (): JSX.Element => {
       </div>
 
       {/* Overlay to close dropdown when clicking outside */}
-      {isProgramDropdownOpen && (
+      {(isProgramDropdownOpen || isAkademikOpen || isKemahasiswaanOpen || isProfileOpen) && (
         <div 
           className="fixed inset-0 z-40" 
-          onClick={() => setIsProgramDropdownOpen(false)}
+          onClick={() => closeAll()}
         />
       )}
     </nav>

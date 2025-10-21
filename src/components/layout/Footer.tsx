@@ -1,5 +1,6 @@
-import { GlobeIcon, MapPinIcon } from "lucide-react";
+import { GlobeIcon, MapPinIcon, Instagram, Twitter, Facebook, Youtube } from "lucide-react";
 import { Link } from 'react-router-dom';
+import { SiLine, SiTiktok, SiRss } from 'react-icons/si';
 
 const findLinks = [
   { text: "Tentang Kami", url: "/about-us", external: false },
@@ -13,37 +14,46 @@ const supportLinks = [
   { text: "Pusat Bantuan SIX", url: "https://helpdesk.six.kampusxyz.ac.id", external: true },
 ];
 
+const socialMediaLinks = [
+  { icon: Instagram, url: "https://instagram.com/kampusxyz", label: "Instagram" },
+  { icon: Twitter, url: "https://twitter.com/kampusxyz", label: "Twitter" },
+  { icon: SiLine, url: "https://line.me/kampusxyz", label: "LINE" },
+  { icon: Facebook, url: "https://facebook.com/kampusxyz", label: "Facebook" },
+  { icon: Youtube, url: "https://youtube.com/kampusxyz", label: "YouTube" },
+  { icon: SiTiktok, url: "https://tiktok.com/@kampusxyz", label: "TikTok" },
+  { icon: SiRss, url: "https://kampusxyz.ac.id/rss", label: "RSS Feed" },
+];
+
 export const Footer = (): JSX.Element => {
   return (
-    <footer className="w-full bg-white">
-      <div className="container mx-auto px-4 py-12">
+    <footer className="w-full bg-[#f5f5f5]">
+      <div className="max-w-[1224px] mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="flex flex-col gap-4">
-            <div className="inline-flex items-center gap-2">
-              <div className="inline-flex items-center gap-3">
-                <div className="w-14 h-14 bg-[#005aab] rounded-[28px]" />
-                <div className="font-semibold text-[#333333] text-sm leading-5">
-                  Akademik dan Kemahasiswaan
-                  <br />
-                  Kampus XYZ
-                </div>
+            <div className="inline-flex items-center gap-3">
+              <div className="w-14 h-14 bg-[#005aab] rounded-full flex-shrink-0" />
+              <div className="font-semibold text-[#333333] text-sm leading-5">
+                Akademik dan Kemahasiswaan
+                <br />
+                Kampus XYZ
               </div>
             </div>
 
-            <div className="flex flex-col gap-[13px]">
-              <div className="flex items-start gap-1.5">
+            <div className="flex flex-col gap-3">
+              <div className="flex items-start gap-2">
                 <MapPinIcon className="w-5 h-5 text-[#3d3d3d] flex-shrink-0 mt-0.5" />
-                <div className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#3d3d3d] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
-                  Kantor Direktorat Pendidikan Kampus XYZ
+                <div className="text-[#3d3d3d] text-sm leading-relaxed">
+                  Kantor Direktorat Pendidikan ITB
                   <br />
-                  Gedung CCAR Kampus XYZ Lantai 4<br />
+                  Gedung CCAR ITB Lantai 4
+                  <br />
                   Jalan Tamansari Nomor 64 Bandung 40116
                 </div>
               </div>
 
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-2">
                 <GlobeIcon className="w-5 h-5 text-[#3d3d3d] flex-shrink-0" />
-                <div className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#3d3d3d] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
+                <div className="text-[#3d3d3d] text-sm">
                   xyz.ac.id
                 </div>
               </div>
@@ -51,26 +61,32 @@ export const Footer = (): JSX.Element => {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h3 className="font-h11-bold font-[number:var(--h11-bold-font-weight)] text-[#0660a6] text-[length:var(--h11-bold-font-size)] tracking-[var(--h11-bold-letter-spacing)] leading-[var(--h11-bold-line-height)] [font-style:var(--h11-bold-font-style)]">
+            <h3 className="font-semibold text-[#0660a6] text-base">
               Temukan
             </h3>
 
-            <nav className="flex flex-col gap-4">
+            <nav className="flex flex-col gap-3">
               {findLinks.map((link, index) => (
                 link.external ? (
-                  <a key={index} href={link.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-start gap-1.5 hover:underline">
-                    <span className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#333333] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
-                      {link.text}
-                    </span>
+                  <a
+                    key={index}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-[#333333] text-sm hover:underline transition-all"
+                  >
+                    <span>{link.text}</span>
                     <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </a>
                 ) : (
-                  <Link key={index} to={link.url} className="inline-flex items-start gap-1.5 hover:underline">
-                    <span className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#333333] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
-                      {link.text}
-                    </span>
+                  <Link
+                    key={index}
+                    to={link.url}
+                    className="text-[#333333] text-sm hover:underline transition-all"
+                  >
+                    {link.text}
                   </Link>
                 )
               ))}
@@ -78,26 +94,32 @@ export const Footer = (): JSX.Element => {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h3 className="font-h11-bold font-[number:var(--h11-bold-font-weight)] text-[#0660a6] text-[length:var(--h11-bold-font-size)] tracking-[var(--h11-bold-letter-spacing)] leading-[var(--h11-bold-line-height)] [font-style:var(--h11-bold-font-style)]">
+            <h3 className="font-semibold text-[#0660a6] text-base">
               Bantuan &amp; Dukungan
             </h3>
 
-            <nav className="flex flex-col gap-4">
+            <nav className="flex flex-col gap-3">
               {supportLinks.map((link, index) => (
                 link.external ? (
-                  <a key={index} href={link.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-start gap-1.5 hover:underline">
-                    <span className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#333333] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
-                      {link.text}
-                    </span>
+                  <a
+                    key={index}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-[#333333] text-sm hover:underline transition-all"
+                  >
+                    <span>{link.text}</span>
                     <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </a>
                 ) : (
-                  <Link key={index} to={link.url} className="inline-flex items-start gap-1.5 hover:underline">
-                    <span className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#333333] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
-                      {link.text}
-                    </span>
+                  <Link
+                    key={index}
+                    to={link.url}
+                    className="text-[#333333] text-sm hover:underline transition-all"
+                  >
+                    {link.text}
                   </Link>
                 )
               ))}
@@ -105,27 +127,33 @@ export const Footer = (): JSX.Element => {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h3 className="font-h11-bold font-[number:var(--h11-bold-font-weight)] text-[#0660a6] text-[length:var(--h11-bold-font-size)] tracking-[var(--h11-bold-letter-spacing)] leading-[var(--h11-bold-line-height)] [font-style:var(--h11-bold-font-style)]">
+            <h3 className="font-semibold text-[#0660a6] text-base">
               Media Sosial
             </h3>
-            <div className="flex gap-3">
-              <a href="#" className="hover:opacity-80 transition-opacity">
-                <div className="w-8 h-8 rounded-full bg-gray-200" />
-              </a>
-              <a href="#" className="hover:opacity-80 transition-opacity">
-                <div className="w-8 h-8 rounded-full bg-gray-200" />
-              </a>
-              <a href="#" className="hover:opacity-80 transition-opacity">
-                <div className="w-8 h-8 rounded-full bg-gray-200" />
-              </a>
+            <div className="flex flex-wrap gap-3">
+              {socialMediaLinks.map((social, index) => {
+                const IconComponent = social.icon;
+                return (
+                  <a
+                    key={index}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-full bg-[#a3d4f5] flex items-center justify-center hover:bg-[#7fc3f0] transition-colors"
+                    aria-label={social.label}
+                  >
+                    <IconComponent className="w-5 h-5 text-white" />
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
       </div>
 
-      <div className="w-full border-t border-gray-200">
+      <div className="w-full border-t border-gray-300">
         <div className="max-w-[1224px] mx-auto px-4 py-4">
-          <p className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#9e9e9e] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
+          <p className="text-[#9e9e9e] text-sm text-center md:text-left">
             ©2024 Direktorat Pendidikan Akademik dan Kemahasiswaan Kampus
           </p>
         </div>

@@ -12,7 +12,8 @@ const mainNavItems = [
 
 export const NavbarMenuPublikSubsection = (): JSX.Element => {
   return (
-    <nav className="w-full inline-flex flex-col items-start">
+    // ensure navbar creates its own stacking context so dropdowns can appear above other sections
+    <nav className="w-full inline-flex flex-col items-start relative z-50">
       <div className="w-full flex flex-col items-start">
           <div className="flex flex-col w-full items-end justify-center gap-2.5 px-4 py-2.5 bg-[#0660a6] border-b-[0.6px] [border-bottom-style:solid] border-[#cccccc]">
             <div className="inline-flex items-center justify-end gap-2.5 w-full container mx-auto">
@@ -55,7 +56,7 @@ export const NavbarMenuPublikSubsection = (): JSX.Element => {
               </div>
             </div>
 
-            <div className="inline-flex items-center justify-end gap-5">
+            <div className="inline-flex items-center justify-end gap-5 z-50">
               <div className="inline-flex items-center gap-4">
                 {mainNavItems.map((item, index) => (
                   <button

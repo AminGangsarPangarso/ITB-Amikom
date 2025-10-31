@@ -33,18 +33,20 @@ export const QuickLinksSubsection = (): JSX.Element => {
         <h2 className="font-h5-bold font-[number:var(--h5-bold-font-weight)] text-[#3d3d3d] text-[length:var(--h5-bold-font-size)] text-center tracking-[var(--h5-bold-letter-spacing)] leading-[var(--h5-bold-line-height)] [font-style:var(--h5-bold-font-style)]">
           Quick Links Kampus XYZ
         </h2>
+        <br />
+        <br />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full auto-rows-fr">
           {quickLinksData.map((item, index) => (
               <div key={index} className="h-full flex flex-col justify-between p-6 bg-white rounded shadow-sm">
               <div>
-                <div className="w-full min-h-[26px] flex items-center justify-center">
-                  <h3 className="font-h10-bold font-[number:var(--h10-bold-font-weight)] text-[#333333] text-[length:var(--h10-bold-font-size)] text-center tracking-[var(--h10-bold-letter-spacing)] leading-[var(--h10-bold-line-height)] [font-style:var(--h10-bold-font-style)] whitespace-pre-line">
+                <div className="w-full min-h-[26px] flex">
+                  <h3 className="font-h10-bold text-left font-[number:var(--h10-bold-font-weight)] text-[#333333] text-[length:var(--h10-bold-font-size)]  tracking-[var(--h10-bold-letter-spacing)] leading-[var(--h10-bold-line-height)] [font-style:var(--h10-bold-font-style)] whitespace-pre-line">
                     {item.title}
                   </h3>
                 </div>
 
-                <p className="mt-4 w-full font-body-text-16px-regular font-[number:var(--body-text-16px-regular-font-weight)] text-[#4c4c4c] text-[length:var(--body-text-16px-regular-font-size)] text-center tracking-[var(--body-text-16px-regular-letter-spacing)] leading-[var(--body-text-16px-regular-line-height)] [font-style:var(--body-text-16px-regular-font-style)]">
+                <p className="mt-4 w-full font-body-text-16px-regular font-[number:var(--body-text-16px-regular-font-weight)] text-[#4c4c4c] text-[length:var(--body-text-16px-regular-font-size)] text-left tracking-[var(--body-text-16px-regular-letter-spacing)] leading-[var(--body-text-16px-regular-line-height)] [font-style:var(--body-text-16px-regular-font-style)]">
                   {item.description}
                 </p>
               </div>
@@ -62,6 +64,8 @@ export const QuickLinksSubsection = (): JSX.Element => {
         </div>
         </div>
       </div>
+        <br />
+        <br />
     </section>
   );
 };

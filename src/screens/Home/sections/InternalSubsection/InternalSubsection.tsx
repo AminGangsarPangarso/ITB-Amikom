@@ -41,7 +41,7 @@ const educationLevels = [
   },
   {
     id: "pascasarjana",
-    icon: "",
+    icon: "/pascasarjana.png",
     title: "Pascasarjana",
     fields: [
       {
@@ -81,7 +81,7 @@ const educationLevels = [
   },
   {
     id: "profesi",
-    icon: "",
+    icon: "/profesi.png",
     title: "Profesi",
     fields: [
       { name: "Apoteker", color: "bg-[#ffae20]", opacity: "opacity-70" },

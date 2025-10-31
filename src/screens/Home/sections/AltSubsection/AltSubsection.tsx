@@ -28,18 +28,22 @@ const academicServicesData = [
   {
     title: "Dokumen Kemahasiswaan",
     icon: true,
+    icon_path : "/dokumen-kemahasiswaan-icon.png",
   },
   {
     title: "Dokumen Wisuda",
     icon: true,
+    icon_path : "/dokumen-wisuda-icon.png",
   },
   {
     title: "Dokumen Registrasi dan Aktivasi Akun",
     icon: true,
+    icon_path : "/dokumen-registrasi-icon.png",
   },
   {
     title: "Dokumen Alumni",
     icon: true,
+    icon_path : "/dokumen-alumni-icon.png",
   },
 ];
 
@@ -96,6 +100,7 @@ export const AltSubsection = (): JSX.Element => {
                       <img
                         className="w-full h-full object-contain"
                         alt="Service icon"
+                        src={item.icon_path}
                       />
                     </div>
                     <div className="flex-1 font-h10-semibold font-[number:var(--h10-semibold-font-weight)] text-[#333333] text-[length:var(--h10-semibold-font-size)] tracking-[var(--h10-semibold-letter-spacing)] leading-[var(--h10-semibold-line-height)] [font-style:var(--h10-semibold-font-style)]">

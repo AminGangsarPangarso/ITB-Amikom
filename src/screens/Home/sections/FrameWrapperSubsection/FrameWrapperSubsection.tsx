@@ -57,7 +57,7 @@ export const FrameWrapperSubsection = (): JSX.Element => {
             </h2>
 
             <Button asChild className="h-12 justify-center gap-2.5 px-4 bg-white rounded-[100px] overflow-hidden hover:bg-white/90">
-              <a href="/programs" className="[font-family:'Inter',Helvetica] font-medium text-[#069dd8] text-base text-center tracking-[0] leading-[22px] whitespace-nowrap">Daftar Sekarang</a>
+              <a href="/programs" className="[font-family:'Inter',Helvetica] font-medium text-[#069DD8] text-base text-center tracking-[0] leading-[22px] whitespace-nowrap">Daftar Sekarang</a>
             </Button>
           </div>
         </div>

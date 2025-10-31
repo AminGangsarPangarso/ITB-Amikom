@@ -29,7 +29,7 @@ export const Footer = (): JSX.Element => {
   return (
     <footer className="w-full relative isolate">
       <div className="absolute inset-x-0 bottom-0  h-[220px] pointer-events-none bg-[#005aab]/10 blur-3xl  z-[-1]" />
-      <div className="relative bg-[#CDEBF7]  z-30 container mx-auto px-4 py-12 rounded-t-[24px]">
+      <div className="relative bg-[#E6EFF6]  z-30 container mx-auto px-4 py-12 rounded-t-[24px]">
         <div className=" backdrop-blur-sm  p-8 bottom-0 relative">
           <div className="flex flex-wrap items-start justify-between gap-8">
             <div className="flex flex-col w-full lg:w-[360px] gap-4">

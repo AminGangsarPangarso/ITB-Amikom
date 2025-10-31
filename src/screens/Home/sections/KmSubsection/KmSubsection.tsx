@@ -50,30 +50,15 @@ export const KmSubsection = (): JSX.Element => {
         <div className="flex items-start justify-between gap-8">
           <nav className="flex flex-col gap-5">
             {menuItems.map((item, index) => (
-              <div key={index} className="flex items-center gap-4">
-                {item.hasIcon && (
-                  <div className="w-[52px] h-[52px] flex items-center justify-center">
-                    <svg
-                      width="52"
-                      height="52"
-                      viewBox="0 0 52 52"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle cx="26" cy="26" r="26" fill="#069DD8" />
-                      <path
-                        d="M26 16V36M16 26H36"
-                        stroke="white"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </div>
-                )}
-                <button
-                  className={`font-h10-bold font-[number:var(--h10-bold-font-weight)] text-[length:var(--h10-bold-font-size)] leading-[var(--h10-bold-line-height)] tracking-[var(--h10-bold-letter-spacing)] [font-style:var(--h10-bold-font-style)] text-left whitespace-pre-line ${
-                    item.active ? "text-[#069dd8]" : "text-[#51bae4]"
+              <div
+                key={index}
+                className={`flex items-center gap-4 ${
+                  index === 0 ? "border-l-4 pl-4 border-[#069dd8]" : ""
                   }`}
+              >
+                <button
+                  className={`font-h10-bold font-[number:var(--h10-bold-font-weight)] text-[length:var(--h10-bold-font-size)] leading-[var(--h10-bold-line-height)] tracking-[var(--h10-bold-letter-spacing)] [font-style:var(--h10-bold-font-style)] text-left whitespace-pre-line ${item.active ? "text-[#069dd8]" : "text-[#51bae4]/70"
+                    }`}
                 >
                   {item.title}
                 </button>

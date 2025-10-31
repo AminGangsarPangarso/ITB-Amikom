@@ -1,5 +1,6 @@
 import { MapPinIcon } from "lucide-react";
 import React from "react";
+import { FaArrowRight } from "react-icons/fa";
 import { Badge } from "../../../../components/ui/badge";
 import { Card, CardContent } from "../../../../components/ui/card";
 
@@ -39,7 +40,20 @@ const programs = [
 export const ExternalProgramSubsection = (): JSX.Element => {
   return (
     <section className="w-full bg-white py-16">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 relative isolate overflow-hidden">
+       <div 
+        className="absolute top-0 left-[-300px] w-full h-full z-[-1]"
+        style={{
+          backgroundImage: 'url(/external-program-bg.png)', 
+          backgroundSize: 'cover',
+          backgroundPosition: 'left center',
+          backgroundRepeat: 'no-repeat',
+          maskImage: 'linear-gradient(to right, black 80%, transparent 100%)', // Efek fade out di kanan
+          WebkitMaskImage: 'linear-gradient(to right, black 80%, transparent 100%)', // Untuk kompatibilitas browser
+        }}
+      ></div>
+      {/* --- Overlay gradient putih untuk menyamarkan tepi kanan jika gambar aslinya tidak pudar --- */}
+        
         <div className="flex flex-col items-end gap-8">
           <div className="flex flex-col items-start gap-2.5">
             <h2 className="w-full max-w-[566px] font-h5-bold font-[number:var(--h5-bold-font-weight)] text-[length:var(--h5-bold-font-size)] tracking-[var(--h5-bold-letter-spacing)] leading-[var(--h5-bold-line-height)] [font-style:var(--h5-bold-font-style)]">
@@ -57,18 +71,16 @@ export const ExternalProgramSubsection = (): JSX.Element => {
                   {tabs.map((tab) => (
                     <button
                       key={tab.id}
-                      className={`flex items-center gap-2 px-3 py-2 ${
-                        tab.active
-                          ? "border-b-4 border-[#333333]"
-                          : "border-b-2 border-[#cccccc]"
-                      }`}
+                      className={`flex items-center gap-2 px-3 py-2 ${tab.active
+                        ? "border-b-4 border-[#333333]"
+                        : "border-b-2 border-[#cccccc]"
+                        }`}
                     >
                       <span
-                        className={`${
-                          tab.active
-                            ? "font-h10-bold font-[number:var(--h10-bold-font-weight)] text-[#333333] text-[length:var(--h10-bold-font-size)] tracking-[var(--h10-bold-letter-spacing)] leading-[var(--h10-bold-line-height)] [font-style:var(--h10-bold-font-style)]"
-                            : "font-body-text-18px-regular font-[number:var(--body-text-18px-regular-font-weight)] text-[#808080] text-[length:var(--body-text-18px-regular-font-size)] tracking-[var(--body-text-18px-regular-letter-spacing)] leading-[var(--body-text-18px-regular-line-height)] [font-style:var(--body-text-18px-regular-font-style)]"
-                        } text-center whitespace-nowrap`}
+                        className={`${tab.active
+                          ? "font-h10-bold font-[number:var(--h10-bold-font-weight)] text-[#333333] text-[length:var(--h10-bold-font-size)] tracking-[var(--h10-bold-letter-spacing)] leading-[var(--h10-bold-line-height)] [font-style:var(--h10-bold-font-style)]"
+                          : "font-body-text-18px-regular font-[number:var(--body-text-18px-regular-font-weight)] text-[#808080] text-[length:var(--body-text-18px-regular-font-size)] tracking-[var(--body-text-18px-regular-letter-spacing)] leading-[var(--body-text-18px-regular-line-height)] [font-style:var(--body-text-18px-regular-font-style)]"
+                          } text-center whitespace-nowrap`}
                       >
                         {tab.label}
                       </span>
@@ -145,6 +157,11 @@ export const ExternalProgramSubsection = (): JSX.Element => {
                 <h3 className="relative w-[218px] h-[60px] font-h9-bold font-[number:var(--h9-bold-font-weight)] text-white text-[length:var(--h9-bold-font-size)] tracking-[var(--h9-bold-letter-spacing)] leading-[var(--h9-bold-line-height)] overflow-hidden text-ellipsis [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical] [font-style:var(--h9-bold-font-style)]">
                   Semua Program Student Exchange
                 </h3>
+                <br />
+                <div className="text-white">
+                  <FaArrowRight className="text-[60px]" />
+                </div>
+
 
                 <div className="relative w-[135px] h-[135px] rounded-[67.5px] bg-[linear-gradient(2deg,rgba(36,123,190,0)_0%,rgba(48,123,181,1)_100%)]" />
               </CardContent>

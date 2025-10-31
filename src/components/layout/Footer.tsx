@@ -1,5 +1,7 @@
-import { Facebook, GlobeIcon, Instagram, MapPinIcon, Rss, Twitter, Youtube } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Facebook, GlobeIcon, Instagram, MapPinIcon, Twitter, Youtube } from "lucide-react";
+import type { ComponentType } from 'react';
+import { SiLine, SiRss, SiTiktok } from 'react-icons/si';
+import { Link } from 'react-router-dom';
 
 const findLinks = [
   { text: "Tentang Kami", url: "/about-us", external: false },
@@ -13,11 +15,21 @@ const supportLinks = [
   { text: "Pusat Bantuan SIX", url: "https://helpdesk.six.kampusxyz.ac.id", external: true },
 ];
 
+const socialMediaLinks = [
+  { icon: Instagram, url: "https://instagram.com/kampusxyz", label: "Instagram" },
+  { icon: Twitter, url: "https://twitter.com/kampusxyz", label: "Twitter" },
+  { icon: SiLine, url: "https://line.me/kampusxyz", label: "LINE" },
+  { icon: Facebook, url: "https://facebook.com/kampusxyz", label: "Facebook" },
+  { icon: Youtube, url: "https://youtube.com/kampusxyz", label: "YouTube" },
+  { icon: SiTiktok, url: "https://tiktok.com/@kampusxyz", label: "TikTok" },
+  { icon: SiRss, url: "https://kampusxyz.ac.id/rss", label: "RSS Feed" },
+];
+
 export const Footer = (): JSX.Element => {
   return (
     <footer className="w-full relative isolate">
-      <div className="absolute inset-x-0 bottom-0 h-[320px] pointer-events-none bg-[#005aab]/10 blur-3xl z-[-1]" />
-      <div className="relative bg-white/80  z-30 container mx-auto px-4 py-12 rounded-t-[24px]">
+      <div className="absolute inset-x-0 bottom-[-100px] h-[320px] pointer-events-none bg-[#005aab]/20 blur-3xl z-[-1]" />
+      <div className="relative bg-[#CDEBF7]  z-30 container mx-auto px-4 py-12 rounded-t-[24px]">
         <div className=" backdrop-blur-sm  p-8 bottom-0 relative">
           <div className="flex flex-wrap items-start justify-between gap-8">
             <div className="flex flex-col w-full lg:w-[360px] gap-4">
@@ -88,21 +100,14 @@ export const Footer = (): JSX.Element => {
               <div className="flex flex-col items-end">
                 <h3 className="font-h11-bold text-brand mb-4">Media Sosial</h3>
                 <div className="flex items-center gap-3">
-                  <a href="#" aria-label="Instagram" className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm hover:opacity-90">
-                    <Instagram className="w-4 h-4 text-brand" />
-                  </a>
-                  <a href="#" aria-label="X" className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm hover:opacity-90">
-                    <Twitter className="w-4 h-4 text-brand" />
-                  </a>
-                  <a href="#" aria-label="Facebook" className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm hover:opacity-90">
-                    <Facebook className="w-4 h-4 text-brand" />
-                  </a>
-                  <a href="#" aria-label="YouTube" className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm hover:opacity-90">
-                    <Youtube className="w-4 h-4 text-brand" />
-                  </a>
-                  <a href="#" aria-label="RSS" className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm hover:opacity-90">
-                    <Rss className="w-4 h-4 text-brand" />
-                  </a>
+                  {socialMediaLinks.map((social, idx) => {
+                    const IconComponent = social.icon as ComponentType<{ className?: string }>;
+                    return (
+                      <a key={idx} href={social.url} target="_blank" rel="noreferrer" aria-label={social.label} className="text-white p-2 rounded-full bg-[#5190C1] ro hover:text-brand">
+                        <IconComponent className="w-6 h-6 " />
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             </div>

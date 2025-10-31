@@ -5,7 +5,7 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbP
 export const Terms = (): JSX.Element => {
   return (
     <MainLayout>
-      <div className="mx-auto max-w-[900px] px-6 py-10">
+      <div className="mx-auto container px-6 py-10">
         <div className="mb-4">
           <Breadcrumb>
             <BreadcrumbList>

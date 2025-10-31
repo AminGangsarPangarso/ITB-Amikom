@@ -1,5 +1,5 @@
-import { GlobeIcon, MapPinIcon } from "lucide-react";
-import { Link } from 'react-router-dom';
+import { Facebook, GlobeIcon, Instagram, MapPinIcon, Rss, Twitter, Youtube } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const findLinks = [
   { text: "Tentang Kami", url: "/about-us", external: false },
@@ -15,119 +15,104 @@ const supportLinks = [
 
 export const Footer = (): JSX.Element => {
   return (
-    <footer className="w-full bg-white">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="flex flex-col gap-4">
-            <div className="inline-flex items-center gap-2">
+    <footer className="w-full relative isolate">
+      <div className="absolute inset-x-0 bottom-0 h-[320px] pointer-events-none bg-[#005aab]/10 blur-3xl z-[-1]" />
+      <div className="relative bg-white/80  z-30 container mx-auto px-4 py-12 rounded-t-[24px]">
+        <div className=" backdrop-blur-sm  p-8 bottom-0 relative">
+          <div className="flex flex-wrap items-start justify-between gap-8">
+            <div className="flex flex-col w-full lg:w-[360px] gap-4">
               <div className="inline-flex items-center gap-3">
-                <div className="w-14 h-14 bg-[#005aab] rounded-[28px]" />
-                <div className="font-semibold text-[#333333] text-sm leading-5">
-                  Akademik dan Kemahasiswaan
-                  <br />
-                  Kampus XYZ
+                <div className="w-14 h-14 bg-[#005aab] rounded-full" />
+                <div>
+                  <div className="font-semibold text-[#0f1724]">Akademik dan Kemahasiswaan</div>
+                  <div className="text-sm text-[#0f1724]">Kampus XYZ</div>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-3">
+                <div className="flex items-start gap-3">
+                  <MapPinIcon className="w-5 h-5 text-[#3d3d3d] flex-shrink-0 mt-0.5" />
+                  <div className="text-sm text-[#3d3d3d]">
+                    Kantor Direktorat Pendidikan Kampus XYZ<br />
+                    Gedung CCAR Kampus XYZ Lantai 4<br />
+                    Jalan Tamansari Nomor 64 Bandung 40116
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <GlobeIcon className="w-5 h-5 text-[#3d3d3d] flex-shrink-0" />
+                  <div className="text-sm text-[#3d3d3d]">xyz.ac.id</div>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-col gap-[13px]">
-              <div className="flex items-start gap-1.5">
-                <MapPinIcon className="w-5 h-5 text-[#3d3d3d] flex-shrink-0 mt-0.5" />
-                <div className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#3d3d3d] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
-                  Kantor Direktorat Pendidikan Kampus XYZ
-                  <br />
-                  Gedung CCAR Kampus XYZ Lantai 4<br />
-                  Jalan Tamansari Nomor 64 Bandung 40116
+            <div className="flex-1 flex items-start justify-between gap-8">
+              <div className="flex gap-12">
+                <div>
+                  <h3 className="font-h11-bold text-brand mb-4">Temukan</h3>
+                  <nav className="flex flex-col gap-3">
+                    {findLinks.map((link, idx) => (
+                      link.external ? (
+                        <a key={idx} href={link.url} target="_blank" rel="noreferrer" className="text-sm text-[#333333] hover:underline inline-flex items-center gap-2">
+                          <span>{link.text}</span>
+                          <svg className="w-4 h-4 text-[#9aa7b6]" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </a>
+                      ) : (
+                        <Link key={idx} to={link.url} className="text-sm text-[#333333] hover:underline">{link.text}</Link>
+                      )
+                    ))}
+                  </nav>
+                </div>
+
+                <div>
+                  <h3 className="font-h11-bold text-brand mb-4">Bantuan &amp; Dukungan</h3>
+                  <nav className="flex flex-col gap-3">
+                    {supportLinks.map((link, idx) => (
+                      link.external ? (
+                        <a key={idx} href={link.url} target="_blank" rel="noreferrer" className="text-sm text-[#333333] hover:underline inline-flex items-center gap-2">
+                          <span>{link.text}</span>
+                          <svg className="w-4 h-4 text-[#9aa7b6]" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </a>
+                      ) : (
+                        <Link key={idx} to={link.url} className="text-sm text-[#333333] hover:underline">{link.text}</Link>
+                      )
+                    ))}
+                  </nav>
                 </div>
               </div>
 
-              <div className="flex items-center gap-1.5">
-                <GlobeIcon className="w-5 h-5 text-[#3d3d3d] flex-shrink-0" />
-                <div className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#3d3d3d] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
-                  xyz.ac.id
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-4">
-            <h3 className="font-h11-bold font-[number:var(--h11-bold-font-weight)] text-[#0660a6] text-[length:var(--h11-bold-font-size)] tracking-[var(--h11-bold-letter-spacing)] leading-[var(--h11-bold-line-height)] [font-style:var(--h11-bold-font-style)]">
-              Temukan
-            </h3>
-
-            <nav className="flex flex-col gap-4">
-              {findLinks.map((link, index) => (
-                link.external ? (
-                  <a key={index} href={link.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-start gap-1.5 hover:underline">
-                    <span className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#333333] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
-                      {link.text}
-                    </span>
-                    <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
+              <div className="flex flex-col items-end">
+                <h3 className="font-h11-bold text-brand mb-4">Media Sosial</h3>
+                <div className="flex items-center gap-3">
+                  <a href="#" aria-label="Instagram" className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm hover:opacity-90">
+                    <Instagram className="w-4 h-4 text-brand" />
                   </a>
-                ) : (
-                  <Link key={index} to={link.url} className="inline-flex items-start gap-1.5 hover:underline">
-                    <span className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#333333] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
-                      {link.text}
-                    </span>
-                  </Link>
-                )
-              ))}
-            </nav>
-          </div>
-
-          <div className="flex flex-col gap-4">
-            <h3 className="font-h11-bold font-[number:var(--h11-bold-font-weight)] text-[#0660a6] text-[length:var(--h11-bold-font-size)] tracking-[var(--h11-bold-letter-spacing)] leading-[var(--h11-bold-line-height)] [font-style:var(--h11-bold-font-style)]">
-              Bantuan &amp; Dukungan
-            </h3>
-
-            <nav className="flex flex-col gap-4">
-              {supportLinks.map((link, index) => (
-                link.external ? (
-                  <a key={index} href={link.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-start gap-1.5 hover:underline">
-                    <span className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#333333] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
-                      {link.text}
-                    </span>
-                    <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
+                  <a href="#" aria-label="X" className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm hover:opacity-90">
+                    <Twitter className="w-4 h-4 text-brand" />
                   </a>
-                ) : (
-                  <Link key={index} to={link.url} className="inline-flex items-start gap-1.5 hover:underline">
-                    <span className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#333333] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
-                      {link.text}
-                    </span>
-                  </Link>
-                )
-              ))}
-            </nav>
-          </div>
-
-          <div className="flex flex-col gap-4">
-            <h3 className="font-h11-bold font-[number:var(--h11-bold-font-weight)] text-[#0660a6] text-[length:var(--h11-bold-font-size)] tracking-[var(--h11-bold-letter-spacing)] leading-[var(--h11-bold-line-height)] [font-style:var(--h11-bold-font-style)]">
-              Media Sosial
-            </h3>
-            <div className="flex gap-3">
-              <a href="#" className="hover:opacity-80 transition-opacity">
-                <div className="w-8 h-8 rounded-full bg-gray-200" />
-              </a>
-              <a href="#" className="hover:opacity-80 transition-opacity">
-                <div className="w-8 h-8 rounded-full bg-gray-200" />
-              </a>
-              <a href="#" className="hover:opacity-80 transition-opacity">
-                <div className="w-8 h-8 rounded-full bg-gray-200" />
-              </a>
+                  <a href="#" aria-label="Facebook" className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm hover:opacity-90">
+                    <Facebook className="w-4 h-4 text-brand" />
+                  </a>
+                  <a href="#" aria-label="YouTube" className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm hover:opacity-90">
+                    <Youtube className="w-4 h-4 text-brand" />
+                  </a>
+                  <a href="#" aria-label="RSS" className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm hover:opacity-90">
+                    <Rss className="w-4 h-4 text-brand" />
+                  </a>
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
       </div>
-
-      <div className="w-full border-t border-gray-200">
-        <div className="max-w-[1224px] mx-auto px-4 py-4">
-          <p className="font-body-text-14px-regular font-[number:var(--body-text-14px-regular-font-weight)] text-[#9e9e9e] text-[length:var(--body-text-14px-regular-font-size)] tracking-[var(--body-text-14px-regular-letter-spacing)] leading-[var(--body-text-14px-regular-line-height)] [font-style:var(--body-text-14px-regular-font-style)]">
-            ©2024 Direktorat Pendidikan Akademik dan Kemahasiswaan Kampus
-          </p>
+      <div className="w-full border-t-2 z-30 bg-white border-gray-100  py-6">
+        <div className="max-w-[1224px] mx-auto px-4">
+          <p className="text-center text-sm text-[#9e9e9e]">©2024 Direktorat Pendidikan Akademik dan Kemahasiswaan Kampus</p>
         </div>
       </div>
     </footer>

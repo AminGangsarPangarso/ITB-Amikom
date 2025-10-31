@@ -350,7 +350,7 @@ export const ProgramDetail = (): JSX.Element => {
 								Array.isArray(req) ? (
 									<ul key={idx} className="list-disc pl-6 mb-2">
 										{req.map((sub: string, i: number) => (
-											<li key={i} className="text-[#333] text-base mb-1">{sub}</li>
+											<li key={i} className="text-[#333] text-base mb-1 ml-8">{sub}</li>
 										))}
 									</ul>
 								) : (

@@ -6,7 +6,7 @@ const heroSlides = [
   {
     bg: "/image-20240322-193541-672-1.png",
     title: "Menggali Potensi Diri Mencapai Mimpi dan Meraih Prestasi",
-    button: { label: "Jelajahi Program Studi", href: "/programs" },
+    button: { label: "Jelajahi Program Studi", href: "/programs/sarjana/spesialisasi" },
     image: "/img-4941.png",
     overlay: "/group-427323111.png",
     overlayClass: "hidden sm:block absolute -bottom-10 left-1/2 transform -translate-x-1/2 w-[140px] md:w-[220px] h-auto",
@@ -14,7 +14,7 @@ const heroSlides = [
   {
     bg: "/image-20240322-193541-672-1.png",
     title: "Temukan Inovasi Pembelajaran dalam Berbagai Skema Program",
-    button: { label: "Jelajahi Skema Program", href: "/programs" },
+    button: { label: "Jelajahi Skema Program", href: "/programs/sarjana/spesialisasi" },
     image: "/hero-2.png",
     overlay: null,
     overlayClass: "",

@@ -5,7 +5,8 @@
   "name": "Kampus XYZ",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "start" : "vite preview"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.1.2",

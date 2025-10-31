@@ -1,4 +1,4 @@
-import { ChevronRightIcon } from "lucide-react";
+import { Book, ChevronRightIcon } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { MainLayout } from "../../components/layout";
@@ -34,10 +34,12 @@ const statusConfig = {
 
 export const Profile = (): JSX.Element => {
   const [applications] = useState<Application[]>(getApplications());
+  const [isProgramAktifOpen, setIsProgramAktifOpen] = useState<boolean>(false);
+  const [isStatusProgramOpen, setIsStatusProgramOpen] = useState<boolean>(true);
 
   return (
     <MainLayout>
-      <div className="mx-auto max-w-[1200px] w-full px-6 py-10">
+      <div className="mx-auto container w-full px-6 py-10">
         {/* Breadcrumb */}
         <div className="mb-6">
           <Breadcrumb>
@@ -54,91 +56,122 @@ export const Profile = (): JSX.Element => {
             </BreadcrumbList>
           </Breadcrumb>
         </div>
+        <div className="flex w-full justify-center">
+          <div className="w-[70%]">
 
-        <h1 className="text-3xl font-bold text-[#333] mb-8">Profil Saya</h1>
+            <h1 className="text-3xl font-bold text-[#333] mb-8 text-center">Profil Saya</h1>
 
-        {/* Profile Info - No Card */}
-        <div className="mb-8">
-          <div className="flex items-start justify-between">
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden">
-                 <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
-                  <span className="text-gray-600 font-semibold text-lg">IM</span>
+            {/* Profile Info - No Card */}
+            <div className="mb-8">
+              <div className="flex items-start justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden">
+                    <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                      <span className="text-gray-600 font-semibold text-lg">IM</span>
+                    </div>
+                  </div>
+                  <div>
+                    <h2 className="text-xl font-bold text-[#333]">Ismail Mail</h2>
+                    <div className="text-sm text-[#808080]">15522024</div>
+                    <div className="text-sm text-[#808080]">Fakultas Teknik Sipil & Kelautan / Teknik Kelautan</div>
+                  </div>
                 </div>
-              </div>
-              <div>
-                <h2 className="text-xl font-bold text-[#333]">Ismail Mail</h2>
-                <div className="text-sm text-[#808080]">15522024</div>
-                <div className="text-sm text-[#808080]">Fakultas Teknik Sipil & Kelautan / Teknik Kelautan</div>
+                <button className="text-[#ff4d4f] hover:underline font-medium">
+                  Keluar
+                </button>
               </div>
             </div>
-            <button className="text-[#ff4d4f] hover:underline font-medium">
-              Keluar
-            </button>
+
+            {/* Program Aktif Section (accordion) */}
+            <div className="mb-6 border-t">
+              <div className="flex items-center justify-between gap-2 py-4">
+                <div className="flex items-center gap-2">
+                  <Book />
+                  <h3 className="text-lg font-semibold text-[#333]">Program Aktif</h3>
+                </div>
+                <button
+                  aria-expanded={isProgramAktifOpen}
+                  onClick={() => setIsProgramAktifOpen((v) => !v)}
+                  className="p-2 rounded hover:bg-gray-100"
+                  aria-controls="program-aktif-panel"
+                >
+                  <ChevronRightIcon className={`w-5 h-5 text-[#069dd8] transform transition-transform ${isProgramAktifOpen ? "rotate-90" : "rotate-0"}`} />
+                </button>
+              </div>
+
+              <div id="program-aktif-panel" className={`${isProgramAktifOpen ? "block" : "hidden"} pb-6 flex flex-col justify-center items-center`}>
+                <img className="w-[20rem]" src="/no-program-aktif.png" alt="" />
+                <div className="text-center text-gray-700 pb-4 text-2xl font-bold">
+                  Belum Ada Program Aktif                </div>
+                <div className="text-center text-[#808080]">
+                  Ikuti aneka program akademik ITB untuk kembangkan potensimu                </div>
+              </div>
+            </div>
+
+            {/* Status Program Section (accordion) */}
+            <div className="mb-6 border-t">
+              <div className="flex items-center justify-between gap-2 py-4">
+                <div className="flex items-center gap-2">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 6V10L13 13M19 10C19 14.9706 14.9706 19 10 19C5.02944 19 1 14.9706 1 10C1 5.02944 5.02944 1 10 1C14.9706 1 19 5.02944 19 10Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <h3 className="text-lg font-semibold text-[#333]">Status Program</h3>
+                </div>
+                <button
+                  aria-expanded={isStatusProgramOpen}
+                  onClick={() => setIsStatusProgramOpen((v) => !v)}
+                  className="p-2 rounded hover:bg-gray-100"
+                  aria-controls="status-program-panel"
+                >
+                  <ChevronRightIcon className={`w-5 h-5 text-[#069dd8] transform transition-transform ${isStatusProgramOpen ? "rotate-90" : "rotate-0"}`} />
+                </button>
+              </div>
+
+              <div id="status-program-panel" className={`${isStatusProgramOpen ? "block" : "hidden"} pb-6`}>
+                {applications.length === 0 ? (
+                  <div className="text-center py-16">
+                    <div className="text-[#808080] text-lg mb-4">Belum ada program yang didaftarkan</div>
+                    <Button asChild className="bg-[#069dd8] hover:bg-[#069dd8]/90 rounded-[25px]">
+                      <Link to="/programs">Jelajahi Program</Link>
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {applications.map((app) => {
+                      const config = statusConfig[app.status];
+                      return (
+                        <Card key={app.id} className="rounded-2xl shadow-[0px_2px_25px_#000e331a] border-0">
+                          <CardContent className="flex flex-col gap-3 pt-4 pb-0 px-4">
+                            <div className="flex flex-col gap-4 pt-0 pb-4">
+                              <Badge className={`h-6 w-fit bg-[#ffefd4] text-[#e99400] rounded-lg`}>
+                                {app.programDegree}
+                              </Badge>
+                              <h4 className="font-bold text-[#333333] text-base min-h-[43px]">
+                                {app.programTitle}
+                              </h4>
+                              <div className="flex flex-col gap-1">
+                                <span className="text-sm text-[#333333]">
+                                  {app.faculty}
+                                </span>
+                              </div>
+                              <Button
+                                className={`h-10 w-full ${config.buttonBg} hover:${config.buttonBg}/90 rounded-[25px] text-white font-medium`}
+                                disabled={app.status === "sedang-ditinjau"}
+                              >
+                                {config.buttonLabel}
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Program Aktif Section */}
-        <div className="mb-10">
-          <div className="flex items-center gap-2 mb-4">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 10L9 12L13 8M19 10C19 14.9706 14.9706 19 10 19C5.02944 19 1 14.9706 1 10C1 5.02944 5.02944 1 10 1C14.9706 1 19 5.02944 19 10Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            <h2 className="text-xl font-semibold text-[#333]">Program Aktif</h2>
-          </div>
-          <div className="text-center py-8 text-[#808080]">
-            Belum ada program aktif
-          </div>
-        </div>
-
-        {/* Status Program Section */}
-        <div className="mb-10">
-          <div className="flex items-center gap-2 mb-4">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 6V10L13 13M19 10C19 14.9706 14.9706 19 10 19C5.02944 19 1 14.9706 1 10C1 5.02944 5.02944 1 10 1C14.9706 1 19 5.02944 19 10Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            <h2 className="text-xl font-semibold text-[#333]">Status Program</h2>
-          </div>
-            {applications.length === 0 ? (
-              <div className="text-center py-16">
-                <div className="text-[#808080] text-lg mb-4">Belum ada program yang didaftarkan</div>
-                <Button asChild className="bg-[#069dd8] hover:bg-[#069dd8]/90 rounded-[25px]">
-                  <Link to="/programs">Jelajahi Program</Link>
-                </Button>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {applications.map((app) => {
-                  const config = statusConfig[app.status];
-                  return (
-                    <Card key={app.id} className="rounded-2xl shadow-[0px_2px_25px_#000e331a] border-0">
-                      <CardContent className="flex flex-col gap-3 pt-4 pb-0 px-4">
-                        <div className="flex flex-col gap-4 pt-0 pb-4">
-                          <Badge className={`h-6 w-fit bg-[#ffefd4] text-[#e99400] rounded-lg`}>
-                            {app.programDegree}
-                          </Badge>
-                          <h4 className="font-bold text-[#333333] text-base min-h-[43px]">
-                            {app.programTitle}
-                          </h4>
-                          <div className="flex flex-col gap-1">
-                            <span className="text-sm text-[#333333]">
-                              {app.faculty}
-                            </span>
-                          </div>
-                          <Button 
-                            className={`h-10 w-full ${config.buttonBg} hover:${config.buttonBg}/90 rounded-[25px] text-white font-medium`}
-                            disabled={app.status === "sedang-ditinjau"}
-                          >
-                            {config.buttonLabel}
-                          </Button>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  );
-                })}
-              </div>
-            )}
-        </div>
       </div>
     </MainLayout>
   );

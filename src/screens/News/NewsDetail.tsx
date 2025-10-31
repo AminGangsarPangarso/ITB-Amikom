@@ -89,7 +89,7 @@ export const NewsDetail = (): JSX.Element => {
 
     return (
         <MainLayout>
-            <div className="mx-auto max-w-[1200px] px-6 py-10">
+            <div className="mx-auto container px-6 py-10">
                 <div className="mb-6">
                     <Breadcrumb>
                         <BreadcrumbList className="gap-1">

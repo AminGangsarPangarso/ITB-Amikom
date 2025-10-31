@@ -10,7 +10,7 @@ import { SiInstagram, SiStackoverflow, SiWhatsapp, SiZoom } from 'react-icons/si
 export const Contact = (): JSX.Element => {
   return (
     <MainLayout>
-      <div className="mx-auto max-w-[1200px] w-full px-6 py-10">
+      <div className="mx-auto container w-full px-6 py-10">
         <div className="mb-6">
           <Breadcrumb>
             <BreadcrumbList className="gap-1">

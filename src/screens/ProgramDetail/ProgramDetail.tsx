@@ -340,141 +340,145 @@ export const ProgramDetail = (): JSX.Element => {
 				<br />
 				<br />
 				<br />
-				<div className="flex gap-20 items-start justify-start">
-					{/* Academic requirements */}
-					<div className="mt-10 flex flex-col flex-1">
-						<h2 className="text-xl font-bold text-[#333] mb-4">Pendaftaran & Persyaratan Akademik</h2>
-						<div className="text-[#333] text-base mb-4">Program {detail.type} {detail.title} memiliki persyaratan akademik sebagai syarat wajib untuk mengikuti program ini. Oleh karena itu, mahasiswa wajib memenuhi beberapa persyaratan di bawah ini:</div>
-						<ul className="list-none pl-0 mb-4">
-							{detail.requirements.map((req: any, idx: number) =>
-								Array.isArray(req) ? (
-									<ul key={idx} className="list-disc pl-6 mb-2">
-										{req.map((sub: string, i: number) => (
-											<li key={i} className="text-[#333] text-base mb-1 ml-8">{sub}</li>
-										))}
-									</ul>
-								) : (
-									<li key={idx} className="flex items-start gap-2 text-[#333] text-base mb-1">
-										<span className="text-[#069dd8]">&#10003;</span>
-										<span>{req}</span>
-									</li>
-								)
+				<div className="flex gap-8 lg:gap-20">
+					{/* Left column - Academic requirements and Program structure */}
+					<div className="flex-1 min-w-0">
+						{/* Academic requirements */}
+						<div className="mb-16">
+							<h2 className="text-xl font-bold text-[#333] mb-4">Pendaftaran & Persyaratan Akademik</h2>
+							<div className="text-[#333] text-base mb-4">Program {detail.type} {detail.title} memiliki persyaratan akademik sebagai syarat wajib untuk mengikuti program ini. Oleh karena itu, mahasiswa wajib memenuhi beberapa persyaratan di bawah ini:</div>
+							<ul className="list-none pl-0 mb-4">
+								{detail.requirements.map((req: any, idx: number) =>
+									Array.isArray(req) ? (
+										<ul key={idx} className="list-disc pl-6 mb-2">
+											{req.map((sub: string, i: number) => (
+												<li key={i} className="text-[#333] text-base mb-1 ml-8">{sub}</li>
+											))}
+										</ul>
+									) : (
+										<li key={idx} className="flex items-start gap-2 text-[#333] text-base mb-1">
+											<span className="text-[#069dd8]">&#10003;</span>
+											<span>{req}</span>
+										</li>
+									)
+								)}
+							</ul>
+						</div>
+
+						{/* Program structure */}
+						<div>
+							<h2 className="text-xl font-bold text-[#333] mb-4">Struktur Program</h2>
+							{detail.semesters ? (
+								<div className="overflow-x-auto">
+									<table className="min-w-[600px] w-full border-collapse rounded-xl overflow-hidden shadow">
+										<thead>
+											<tr className="bg-[#0d5c92] text-white">
+												<th className="py-2 px-4 text-left font-semibold">No</th>
+												<th className="py-2 px-4 text-left font-semibold">Kode</th>
+												<th className="py-2 px-4 text-left font-semibold">Mata Kuliah</th>
+												<th className="py-2 px-4 text-left font-semibold">Jenis MK</th>
+												<th className="py-2 px-4 text-left font-semibold">SKS</th>
+											</tr>
+										</thead>
+										<tbody>
+											{detail.semesters.map((sem: any, sIdx: number) => (
+												<>
+													<tr key={`sem-${sIdx}`} className="bg-[#77a9cf] text-white font-semibold">
+														<td colSpan={5} className="py-2 px-4 rounded-none">{sem.title}</td>
+													</tr>
+													{sem.courses.map((course: any) => (
+														<tr key={`${sem.title}-${course.code}`} className="border-b last:border-b-0">
+															<td className="py-2 px-4">{course.no}</td>
+															<td className="py-2 px-4">{course.code}</td>
+															<td className="py-2 px-4">
+																<span className="text-[#069dd8] underline cursor-pointer">{course.name}</span>
+																{course.done && (
+																	<span className="px-2 py-0.5 bg-[#e6f7e6] text-[#27ae60] rounded text-xs">Telah Diambil</span>
+																)}
+															</td>
+															<td className="py-2 px-4">{course.type}</td>
+															<td className="py-2 px-4">{course.sks}</td>
+														</tr>
+													))}
+													<tr className="bg-[#E5F0F7]">
+														<td colSpan={4} className="py-2 px-4 text-right font-bold text-[#333]">Total SKS</td>
+														<td className="py-2 px-4 font-bold text-[#333]">{sem.totalSKS}</td>
+													</tr>
+												</>
+											))}
+										</tbody>
+									</table>
+								</div>
+							) : (
+								<>
+									<div className="text-[#333] text-base mb-4">Total jumlah SKS yang ditawarkan untuk program ini adalah <span className="font-bold">{detail.totalSKS} SKS</span>. Tersedia beragam mata kuliah yang dapat dipilih dan dapat disesuaikan dengan kebutuhan mahasiswa.</div>
+									<div className="overflow-x-auto">
+										<table className="min-w-[600px] w-full border-collapse rounded-xl overflow-hidden shadow">
+											<thead className="bg-[#0d5c92] text-white">
+												<tr>
+													<th className="py-2 px-4 text-left font-bold">No</th>
+													<th className="py-2 px-4 text-left font-bold">Kode</th>
+													<th className="py-2 px-4 text-left font-bold">Mata Kuliah</th>
+													<th className="py-2 px-4 text-left font-bold">SKS</th>
+												</tr>
+											</thead>
+											<tbody>
+												{detail.courses?.map((course: any) => (
+													<tr key={course.code} className="border-b last:border-b-0">
+														<td className="py-2 px-4">{course.no}</td>
+														<td className="py-2 px-4">{course.code}</td>
+														<td className="py-2 px-4">
+															<div className="flex justify-between items-center w-full">
+																<span className="text-[#069dd8] underline cursor-pointer">{course.name}</span>
+																{course.done && (
+																	<span className="px-2 py-0.5 bg-[#e6f7e6] text-[#27ae60] rounded text-xs">Telah Diambil</span>
+																)}
+															</div>
+														</td>
+														<td className="py-2 px-4">{course.sks}</td>
+													</tr>
+												))}
+											</tbody>
+											<tfoot>
+												<tr className="bg-[#E5F0F7]">
+													<td colSpan={3} className="py-2 px-4 text-right font-bold text-[#333]">Total SKS</td>
+													<td className="py-2 px-4 font-bold text-[#333]">{detail.totalSKS}</td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+								</>
 							)}
-						</ul>
+						</div>
 					</div>
 
-					<div className="w-full lg:w-[340px]">
-						<Card className="rounded-2xl shadow-[0px_2px_25px_#000e331a]">
-							<CardContent className="flex flex-col gap-4 p-6">
-								<div className="flex gap-2 mb-2">
-									<Badge className="bg-[#ffefd4] text-[#e99400] rounded-lg">{detail.degree}</Badge>
-									<Badge className="bg-[#e6f7ff] text-[#069dd8] rounded-lg">{detail.type}</Badge>
-								</div>
-								<div className="text-[#808080] text-sm mb-1">{detail.faculty}</div>
-								<h2 className="text-lg font-bold text-[#333] mb-2">{detail.title}</h2>
-								<div className="text-[#808080] text-base">SKS Minimal <span className="font-bold text-[#069dd8]">{detail.minSKS}</span></div>
-								<a href={detail.brochureUrl} className="text-[#069dd8] text-base flex items-center gap-2 underline">
-									<span>Unduh Brosur</span>
-								</a>
-								<Button
-									onClick={handleDaftar}
-									className={`h-10 w-full ${buttonConfig.className} rounded-[25px] text-white font-medium`}
-									disabled={buttonConfig.disabled}
-								>
-									{buttonConfig.label}
-								</Button>
-								<div className="text-xs text-[#808080] mt-2">{detail.registrationNote}</div>
-							</CardContent>
-						</Card>
-					</div>
-				</div>
-				<br />
-				<br />
-				<br />
-				{/* Program structure */}
-				<div className="mt-10 w-[80%]">
-					<h2 className="text-xl font-bold text-[#333] mb-4">Struktur Program</h2>
-					{detail.semesters ? (
-						<div className="overflow-x-auto">
-							<table className="min-w-[600px] w-full border-collapse rounded-xl overflow-hidden shadow">
-								<thead>
-									<tr className="bg-[#0d5c92] text-white">
-										<th className="py-2 px-4 text-left font-semibold">No</th>
-										<th className="py-2 px-4 text-left font-semibold">Kode</th>
-										<th className="py-2 px-4 text-left font-semibold">Mata Kuliah</th>
-										<th className="py-2 px-4 text-left font-semibold">Jenis MK</th>
-										<th className="py-2 px-4 text-left font-semibold">SKS</th>
-									</tr>
-								</thead>
-								<tbody>
-									{detail.semesters.map((sem: any, sIdx: number) => (
-										<>
-											<tr key={`sem-${sIdx}`} className="bg-[#77a9cf] text-white font-semibold">
-												<td colSpan={5} className="py-2 px-4 rounded-none">{sem.title}</td>
-											</tr>
-											{sem.courses.map((course: any) => (
-												<tr key={`${sem.title}-${course.code}`} className="border-b last:border-b-0">
-													<td className="py-2 px-4">{course.no}</td>
-													<td className="py-2 px-4">{course.code}</td>
-													<td className="py-2 px-4">
-														<span className="text-[#069dd8] underline cursor-pointer">{course.name}</span>
-														{course.done && (
-															<span className="px-2 py-0.5 bg-[#e6f7e6] text-[#27ae60] rounded text-xs">Telah Diambil</span>
-														)}
-													</td>
-													<td className="py-2 px-4">{course.type}</td>
-													<td className="py-2 px-4">{course.sks}</td>
-												</tr>
-											))}
-											<tr className="bg-[#E5F0F7]">
-												<td colSpan={4} className="py-2 px-4 text-right font-bold text-[#333]">Total SKS</td>
-												<td className="py-2 px-4 font-bold text-[#333]">{sem.totalSKS}</td>
-											</tr>
-										</>
-									))}
-								</tbody>
-							</table>
+					{/* Right column - Sticky sidebar card */}
+					<div className="hidden lg:block w-[340px] flex-shrink-0">
+						<div className="sticky top-24">
+							<Card className="rounded-2xl shadow-[0px_2px_25px_#000e331a]">
+								<CardContent className="flex flex-col gap-4 p-6">
+									<div className="flex gap-2 mb-2">
+										<Badge className="bg-[#ffefd4] text-[#e99400] rounded-lg">{detail.degree}</Badge>
+										<Badge className="bg-[#e6f7ff] text-[#069dd8] rounded-lg">{detail.type}</Badge>
+									</div>
+									<div className="text-[#808080] text-sm mb-1">{detail.faculty}</div>
+									<h2 className="text-lg font-bold text-[#333] mb-2">{detail.title}</h2>
+									<div className="text-[#808080] text-base">SKS Minimal <span className="font-bold text-[#069dd8]">{detail.minSKS}</span></div>
+									<a href={detail.brochureUrl} className="text-[#069dd8] text-base flex items-center gap-2 underline">
+										<span>Unduh Brosur</span>
+									</a>
+									<Button
+										onClick={handleDaftar}
+										className={`h-10 w-full ${buttonConfig.className} rounded-[25px] text-white font-medium`}
+										disabled={buttonConfig.disabled}
+									>
+										{buttonConfig.label}
+									</Button>
+									<div className="text-xs text-[#808080] mt-2">{detail.registrationNote}</div>
+								</CardContent>
+							</Card>
 						</div>
-					) : (
-						<>
-							<div className="text-[#333] text-base mb-4">Total jumlah SKS yang ditawarkan untuk program ini adalah <span className="font-bold">{detail.totalSKS} SKS</span>. Tersedia beragam mata kuliah yang dapat dipilih dan dapat disesuaikan dengan kebutuhan mahasiswa.</div>
-							<div className="overflow-x-auto">
-								<table className="min-w-[600px] w-full border-collapse rounded-xl overflow-hidden shadow">
-									<thead className="bg-[#0d5c92] text-white">
-										<tr>
-											<th className="py-2 px-4 text-left font-bold">No</th>
-											<th className="py-2 px-4 text-left font-bold">Kode</th>
-											<th className="py-2 px-4 text-left font-bold">Mata Kuliah</th>
-											<th className="py-2 px-4 text-left font-bold">SKS</th>
-										</tr>
-									</thead>
-									<tbody>
-										{detail.courses?.map((course: any) => (
-											<tr key={course.code} className="border-b last:border-b-0">
-												<td className="py-2 px-4">{course.no}</td>
-												<td className="py-2 px-4">{course.code}</td>
-												<td className="py-2 px-4">
-													<div className="flex justify-between items-center w-full">
-														<span className="text-[#069dd8] underline cursor-pointer">{course.name}</span>
-														{course.done && (
-															<span className="px-2 py-0.5 bg-[#e6f7e6] text-[#27ae60] rounded text-xs">Telah Diambil</span>
-														)}
-													</div>
-												</td>
-												<td className="py-2 px-4">{course.sks}</td>
-											</tr>
-										))}
-									</tbody>
-									<tfoot>
-										<tr className="bg-[#E5F0F7]">
-											<td colSpan={3} className="py-2 px-4 text-right font-bold text-[#333]">Total SKS</td>
-											<td className="py-2 px-4 font-bold text-[#333]">{detail.totalSKS}</td>
-										</tr>
-									</tfoot>
-								</table>
-							</div>
-						</>
-					)}
+					</div>
 				</div>
 				<br />
 				<br />
